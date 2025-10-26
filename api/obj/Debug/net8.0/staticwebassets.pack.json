@@ -1,0 +1,65 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\0ff112a2-3fac-4256-a8e0-7e02024db1b4.webp",
+      "PackagePath": "staticwebassets\\uploads\\0ff112a2-3fac-4256-a8e0-7e02024db1b4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\23aa5c7c-0c0c-4a8a-863b-ecee617a79a5.jpg",
+      "PackagePath": "staticwebassets\\uploads\\23aa5c7c-0c0c-4a8a-863b-ecee617a79a5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\56573377-94a7-4695-9407-1a49d7976414.jpg",
+      "PackagePath": "staticwebassets\\uploads\\56573377-94a7-4695-9407-1a49d7976414.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\5d5beabe-10aa-4844-99e1-b911bc51a11c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\5d5beabe-10aa-4844-99e1-b911bc51a11c.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\9029f496-7f21-4f0d-af6a-d53bae5b52a3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\9029f496-7f21-4f0d-af6a-d53bae5b52a3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\b716c21a-2899-4d45-bdf1-fcd90dcc164f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b716c21a-2899-4d45-bdf1-fcd90dcc164f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\ba97032c-ebbe-4656-8538-c9d3cee6702c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\ba97032c-ebbe-4656-8538-c9d3cee6702c.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\d1c4d315-1cc2-4b03-8e2b-106aaafe294e.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d1c4d315-1cc2-4b03-8e2b-106aaafe294e.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\d77ac67d-c6e1-40f9-a2f8-5f7ea3503130.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d77ac67d-c6e1-40f9-a2f8-5f7ea3503130.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\e6308e1b-5245-4f38-87f4-941d5f8451a1.png",
+      "PackagePath": "staticwebassets\\uploads\\e6308e1b-5245-4f38-87f4-941d5f8451a1.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\eae2a5c4-3165-4e2e-8a51-70f8e2f1cef1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\eae2a5c4-3165-4e2e-8a51-70f8e2f1cef1.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.api.props",
+      "PackagePath": "build\\api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.api.props",
+      "PackagePath": "buildMultiTargeting\\api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.api.props",
+      "PackagePath": "buildTransitive\\api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
