@@ -11,5 +11,7 @@ namespace api.Interfaces
     {
         Task<BookingOrderResponseDto> CreateBookingOrderAsync(CreateBookingDto dto, string userId);
         Task<OrderSummaryDto> GetOrderSummaryAsync(int OrderId);
+        Task<List<BookingHistoryDto>> GetBookingHistoryAsyn(string UserId);
+        Task SendTicketEmailAsync(int BookingOrderId);
     }
 }

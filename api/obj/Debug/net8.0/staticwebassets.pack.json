@@ -1,6 +1,18 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\qrcodes\\test_booking_123.png",
+      "PackagePath": "staticwebassets\\qrcodes\\test_booking_123.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\qrcodes\\ticket_13.png",
+      "PackagePath": "staticwebassets\\qrcodes\\ticket_13.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\qrcodes\\ticket_14.png",
+      "PackagePath": "staticwebassets\\qrcodes\\ticket_14.png"
+    },
+    {
       "Id": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\0ff112a2-3fac-4256-a8e0-7e02024db1b4.webp",
       "PackagePath": "staticwebassets\\uploads\\0ff112a2-3fac-4256-a8e0-7e02024db1b4.webp"
     },

@@ -6,6 +6,7 @@ using api.Data;
 using api.Dtos.Booking;
 using api.Interfaces;
 using api.Models;
+using api.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -50,13 +51,26 @@ namespace api.Controllers
             {
                 var order = await _booking.GetOrderSummaryAsync(orderId);
                 return Ok(order);
-                
-            }catch(Exception e)
+
+            }
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
         }
-
+        [HttpGet("history")]
+        [Authorize]
+        public async Task<IActionResult> GetHistoryBooking()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+            var booking = await _booking.GetBookingHistoryAsyn(user.Id);
+            return Ok(booking);
+        }
+       
     }
     
 }

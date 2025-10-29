@@ -87,6 +87,10 @@
               "target": "Package",
               "version": "[13.0.4, )"
             },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.7.0, )"
+            },
             "RestSharp": {
               "target": "Package",
               "version": "[112.1.0, )"

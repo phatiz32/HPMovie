@@ -92,6 +92,7 @@ namespace api.Controllers
             };
             _context.Payments.Add(payment);
             await _context.SaveChangesAsync();
+            await _bookingRepos.SendTicketEmailAsync(orderId);
             return Ok(new
             {
                 message = "Thanh toán MOMO thành công",
@@ -179,6 +180,7 @@ namespace api.Controllers
                 };
                 _context.Payments.Add(payment);
                 await _context.SaveChangesAsync();
+                await _bookingRepos.SendTicketEmailAsync(orderId);
                 return Ok("Payment Success");
                 
             }catch(Exception e)

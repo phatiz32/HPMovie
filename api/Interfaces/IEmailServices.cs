@@ -7,6 +7,6 @@ namespace api.Interfaces
 {
     public interface IEmailServices
     {
-        Task<bool> SendEmailAsync(String toEmail, String subject, string body);
+        Task<bool> SendEmailAsync(String toEmail, String subject, string body,string? imagePath=null);
     }
 }

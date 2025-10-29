@@ -8,6 +8,8 @@ using api.Dtos.Booking;
 using api.Dtos.Order;
 using api.Interfaces;
 using api.Models;
+using api.Service;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository
@@ -15,9 +17,13 @@ namespace api.Repository
     public class BookingRepository : IBookingRepository
     {
         private readonly ApplicationDBContext _context;
-        public BookingRepository(ApplicationDBContext context)
+        private readonly UserManager<AppUser> _userManager;
+        private readonly IEmailServices _emailService;
+        public BookingRepository(ApplicationDBContext context,UserManager<AppUser> userManager,IEmailServices emailServices)
         {
             _context = context;
+            _userManager = userManager;
+            _emailService = emailServices;
         }
         public async Task<BookingOrderResponseDto> CreateBookingOrderAsync(CreateBookingDto dto, string userId)
         {
@@ -93,6 +99,35 @@ namespace api.Repository
             
         }
 
+        public async Task<List<BookingHistoryDto>> GetBookingHistoryAsyn(string userId)
+        {
+            var Booking = await _context.BookingOrders.Include(b => b.showTime)
+                                                       .ThenInclude(s => s.Movie)
+                                                    .Include(b => b.showTime)
+                                                       .ThenInclude(s => s.Room)
+                                                    .Include(b => b.BookingDetails)
+                                                       .ThenInclude(b => b.Seat)
+                                                    .Include(b => b.BookingCombos)
+                                                       .ThenInclude(c => c.Combo)
+                                                    .Include(b => b.Payment)
+                                                    .Where(b => b.UserId == userId)
+                                                    .Select(b => new BookingHistoryDto
+                                                    {
+                                                        MovieTitle = b.showTime.Movie.Title,
+                                                        StartTime = b.showTime.StartTime,
+                                                        TotalAmount = b.TotalPrice,
+                                                        Seats = b.BookingDetails.Select(s => s.Seat.SeatCode),
+                                                        ComboName = b.BookingCombos.Select(s => s.Combo.Name),
+                                                        PaidAt = b.Payment.PaidAt
+
+
+
+                                                    }).ToListAsync();
+            return Booking;
+                                                    
+                                                       
+        }
+
         public async Task<OrderSummaryDto> GetOrderSummaryAsync(int OrderId)
         {
             var order = await _context.BookingOrders
@@ -130,6 +165,44 @@ namespace api.Repository
                     TotalPrice = c.TotalPrice
                 }).ToList()
             }; 
+        }
+
+        public async Task SendTicketEmailAsync(int BookingOrderId)
+        {
+            var booking = await _context.BookingOrders.Include(b => b.showTime)
+                                                       .ThenInclude(s => s.Movie)
+                                                    .Include(b => b.showTime)
+                                                       .ThenInclude(s => s.Room)
+                                                    .Include(b => b.BookingDetails)
+                                                       .ThenInclude(b => b.Seat)
+                                                    .Include(b => b.BookingCombos)
+                                                       .ThenInclude(c => c.Combo)
+                                                    .Include(b => b.Payment)
+                                                    .FirstOrDefaultAsync(b => b.Id == BookingOrderId);
+            if (booking == null)
+            {
+                throw new Exception("booking not found");
+            }
+            var qrContent = $"BookingId:{booking.Id}; Movie:{booking.showTime.Movie.Title}; Seats:{string.Join(",", booking.BookingDetails.Select(s => s.Seat.SeatCode))}; Time:{booking.showTime.StartTime:HH:mm dd/MM/yyyy}; Room:{booking.showTime.Room.Name}";
+            var fileName = $"ticket_{booking.Id}";
+            var qrPath = QrService.GenerateQrCode(qrContent, fileName);
+            var user = await _userManager.FindByIdAsync(booking.UserId);
+            if (user == null)
+            {
+                throw new Exception("user not found");
+            }
+            var body = $@"
+            <h2>🎟 Vé xem phim của bạn</h2>
+            <p>Phim: <b>{booking.showTime.Movie.Title}</b></p>
+            <p>Phòng:<b>{booking.showTime.Room.Name}
+            <p>Ghế: <b>{string.Join(", ", booking.BookingDetails.Select(s => s.Seat.SeatCode))}</b></p>
+            <p>Thời gian: {booking.showTime.StartTime:HH:mm dd/MM/yyyy}</p>
+            <p>Tổng tiền: {booking.TotalPrice:N0} VNĐ</p>
+            <p>Quét mã QR dưới đây khi đến rạp:</p>
+            <img src='cid:{{qrCid}}' alt='QR vé xem phim' width='200'/>
+        ";
+            await _emailService.SendEmailAsync(user.Email, "Vé xem phim của bạn", body,qrPath);
+                                                    
         }
     }
 }
