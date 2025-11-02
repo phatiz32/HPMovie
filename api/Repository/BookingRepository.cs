@@ -185,7 +185,7 @@ namespace api.Repository
             }
             var qrContent = $"BookingId:{booking.Id}; Movie:{booking.showTime.Movie.Title}; Seats:{string.Join(",", booking.BookingDetails.Select(s => s.Seat.SeatCode))}; Time:{booking.showTime.StartTime:HH:mm dd/MM/yyyy}; Room:{booking.showTime.Room.Name}";
             var fileName = $"ticket_{booking.Id}";
-            var qrPath = QrService.GenerateQrCode(qrContent, fileName);
+            var qrPath = QrService.GenerateQrCode(qrContent, fileName); 
             var user = await _userManager.FindByIdAsync(booking.UserId);
             if (user == null)
             {

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4fktdCP3eCY4qB2SvHSFXjPIISnxhN6kY2J+HJzmXUU=",
+  "Hash": "sp6glDU3ocv6oQIhwy/X/HkXoJbgKMrLVw5e1KdewdE=",
   "Source": "api",
   "BasePath": "_content/api",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\qrcodes\\ticket_14.png"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\qrcodes\\ticket_15.png",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "qrcodes/ticket_15.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\qrcodes\\ticket_15.png"
     },
     {
       "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\0ff112a2-3fac-4256-a8e0-7e02024db1b4.webp",
