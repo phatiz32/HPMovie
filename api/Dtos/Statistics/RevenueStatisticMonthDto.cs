@@ -7,7 +7,7 @@ namespace api.Dtos.Statistics
 {
     public class RevenueStatisticMonthDto
     {
-        public int Label { get; set; } 
+        public string Label { get; set; } 
         public decimal TotalRevenue { get; set; }
         public int TotalTickets { get; set; }
     }

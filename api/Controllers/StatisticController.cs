@@ -32,5 +32,33 @@ namespace api.Controllers
             var data = await _statistic.GetRevenueByMonthAsync(Month);
             return Ok(data);
         }
+        [HttpGet("by-movie")]
+        public async Task<IActionResult> GetRevenueByMovie(int year)
+        {
+
+            var data = await _statistic.GetRevenueStatisticMoviesAsync(year);
+            return Ok(data);
+        }
+        [HttpGet("export-bydate")]
+        public async Task<IActionResult> ExportByDate(DateTime startDate, DateTime endDate)
+        {
+            var fileByte = await _statistic.ExportReveneuByDayAsync(startDate, endDate);
+            var fileName = $"Revenue_{startDate}_{endDate}";
+            return File(fileByte, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+        [HttpGet("export-bymonth")]
+        public async Task<IActionResult> ExportByMonth(int year)
+        {
+            var fileByte = await _statistic.ExportReveneuByMonthAsync(year);
+            var fileName = $"Revenue_{year}";
+            return File(fileByte, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+        [HttpGet("export-bymovie")]
+        public async Task<IActionResult> ExportByMovie(int year)
+        {
+            var fileByte = await _statistic.ExportRebeneuByMovie(year);
+            var fileName = $"Revenue_Movie_{year}";
+            return File(fileByte, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
     }
 }

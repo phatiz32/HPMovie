@@ -161,3 +161,11 @@ C:\Users\Admin\HPMovie\api\obj\Debug\net8.0\refint\api.dll
 C:\Users\Admin\HPMovie\api\obj\Debug\net8.0\api.pdb
 C:\Users\Admin\HPMovie\api\obj\Debug\net8.0\api.genruntimeconfig.cache
 C:\Users\Admin\HPMovie\api\obj\Debug\net8.0\ref\api.dll
+C:\Users\Admin\HPMovie\api\bin\Debug\net8.0\ClosedXML.dll
+C:\Users\Admin\HPMovie\api\bin\Debug\net8.0\ClosedXML.Parser.dll
+C:\Users\Admin\HPMovie\api\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+C:\Users\Admin\HPMovie\api\bin\Debug\net8.0\DocumentFormat.OpenXml.Framework.dll
+C:\Users\Admin\HPMovie\api\bin\Debug\net8.0\ExcelNumberFormat.dll
+C:\Users\Admin\HPMovie\api\bin\Debug\net8.0\RBush.dll
+C:\Users\Admin\HPMovie\api\bin\Debug\net8.0\SixLabors.Fonts.dll
+C:\Users\Admin\HPMovie\api\bin\Debug\net8.0\System.IO.Packaging.dll
