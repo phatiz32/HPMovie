@@ -7,6 +7,7 @@ using api.Dtos.Room;
 using api.Interfaces;
 using api.Mappers;
 using api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository
 {
@@ -32,6 +33,16 @@ namespace api.Repository
             await _context.SaveChangesAsync();
             return room;
         }
+
+        public async Task<List<GetRoomDto>> GetRoomAsync()
+        {
+            return await _context.Rooms.Select(s => new GetRoomDto
+            {
+                Id = s.Id,
+                Name = s.Name
+            }).ToListAsync();
+        }
+
         private List<Seat> GenerateSeats(Room room)
         {
             List<Seat> seats = new List<Seat>();

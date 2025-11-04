@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Seat Layout Custom</title>
+        <link rel="stylesheet" href="customseat.css">
+    </head>
+    <body>
+        <div class="controls">
+         <label>Room Name: <input type="text" id="roomName" placeholder="VD: Room 1" /></label>
+         <label>Room Type: 
+            <select id="roomType">
+            <option value="NORMAL">NORMAL</option>
+            <option value="VIP">VIP</option>
+            </select>
+        </label>
+        <label>Rows: <input type="number" id="rows" value="5" min="1" /></label>
+        <label>Cols: <input type="number" id="cols" value="8" min="1" /></label>
+        <button id="generate">Generate Grid</button>
+        <button id="save">Save Layout</button>
+
+         <div id="grid"></div>
+
+         <h4>Generated JSON:</h4>
+         <textarea id="output" readonly></textarea>
+         
+         <script>
+            const gridContainer=document.getElementById("grid");
+            const output= document.getElementById("output");
+
+            document.getElementById("generate").addEventListener("click",()=>{
+                const rows= parseInt(document.getElementById("rows").value);
+                const cols= parseInt(document.getElementById("cols").value);
+                generateGrid(rows,cols);
+
+            });
+            function generateGrid(rows,cols){
+                gridContainer.innerHTML="";
+                gridContainer.style.gridTemplateColumns = `repeat(${cols}, 35px)`;
+                for(let i=1;i<=rows;i++){
+                    for(let j=1;j<=cols;j++){
+                        const cell=document.createElement("div");
+                        cell.classList.add("cell","EMPTY");
+                        cell.dataset.row=i;
+                        cell.dataset.col=j;
+                        cell.dataset.type="EMPTY";
+                        
+                        cell.addEventListener("click",()=>{
+                            const order=["EMPTY","NORMAL","VIP"];
+                            const current= order.indexOf(cell.dataset.type);
+                            const next= order[(current+1)%order.length];
+                            cell.dataset.type=next;
+                            cell.className=`cell ${next}`;
+
+                        });
+                        gridContainer.appendChild(cell);
+                    }
+                }
+            }
+            document.getElementById("save").addEventListener("click",async ()=>{
+                const roomName = document.getElementById("roomName").value.trim();
+                const roomType = document.getElementById("roomType").value;
+                const rows = parseInt(document.getElementById("rows").value);
+                const cols = parseInt(document.getElementById("cols").value);
+                if (!roomName) {
+                    alert("Vui lòng nhập tên phòng!");
+                    return;
+                }
+                const cells= document.querySelectorAll(".cell");
+                const seatData=[];
+                cells.forEach((cell)=>{
+                    const type=cell.dataset.type;
+                    if(type!="EMPTY"){
+                        const row = parseInt(cell.dataset.row);
+                        const col=parseInt(cell.dataset.col);
+                        const seatCode= String.fromCharCode(65+row-1)+col;
+                        seatData.push({
+                            rowIndex: row,
+                            colIndex: col,
+                            seatCode,
+                            seatType:type,
+                        });
+                    }
+                });
+                const payload = {
+                name: roomName,
+                roomType,
+                rowCount: rows,
+                columnCount: cols,
+                seatData
+                };
+                output.value=JSON.stringify(payload,null,2);
+
+                try{
+                    const res= await fetch("http://localhost:5136/api/Room/custom",{
+                        method:"POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload),
+                    });
+                    if (!res.ok) {
+                    const errorText = await res.text();
+                    alert("Lỗi khi tạo phòng: " + errorText);
+                    return;
+                    }
+
+                    const data = await res.json();
+                    alert("✅ Tạo phòng thành công! Tổng số ghế: " + data.totalSeats);
+                    console.log("Response:", data);
+                }catch(err){
+                    console.error(err);
+                    alert("❌ Gửi dữ liệu thất bại: " + err.message);
+                }
+                
+            });
+
+            generateGrid(5,8);
+
+         </script>
+    </body>
+</html>

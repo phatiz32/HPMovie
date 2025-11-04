@@ -10,6 +10,6 @@ namespace api.Interfaces
     public interface IRoomRepository
     {
         Task<Room> CreateRoom(CreateRoomDto dto);
-        
+        Task<List<GetRoomDto>> GetRoomAsync();
     }
 }
