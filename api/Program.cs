@@ -107,6 +107,7 @@ builder.Services.AddScoped<IVnPayService, VnPayService>();
 builder.Services.Configure<MomoOptionModel>(builder.Configuration.GetSection("MomoAPI"));
 builder.Services.AddScoped<IMomoService, MomoService>();
 builder.Services.AddScoped<IStatisticRepository, StatisticRepository>();
+builder.Services.AddScoped<IAccountManager, AccountManager>();
 
 builder.Services.AddHostedService<BookingCleanupService>();
 var app = builder.Build();
