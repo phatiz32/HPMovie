@@ -10,5 +10,6 @@ namespace api.Interfaces
     public interface IAccountManager
     {
         Task<AppUser> CreateStaffAsync(CreateStaffDto dto);
+        Task ImportCreateStaff(IFormFile formFile);
     }
 }

@@ -28,12 +28,30 @@ namespace api.Controllers
                 }
                 var staff = await _accountManager.CreateStaffAsync(dto);
                 return Ok(staff);
-                
-            }catch(Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
 
         }
+        [HttpPost("import-account")]
+        public async Task<IActionResult> CreatebyExcel([FromForm] ImportStaffFileDto dto)
+        {
+            Console.WriteLine("===> Import Excel API called <===");
+
+            try
+            {
+                await _accountManager.ImportCreateStaff(dto.File);
+                return Ok(new { message = "Import successfully" });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }
