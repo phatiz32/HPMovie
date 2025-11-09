@@ -31,7 +31,8 @@ namespace api.Repository
             var user = await _userManager.FindByEmailAsync(forgotPasswordDto.Email);
             if (user == null) return false;
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            var resetLink = $"https://localhost:5001/reset-password?email={Uri.EscapeDataString(user.Email)}&token={Uri.EscapeDataString(token)})";
+           var resetLink = $"http://127.0.0.1:5500/DOAN4/VIEW/reset-password.html?email={Uri.EscapeDataString(user.Email)}&token={Uri.EscapeDataString(token)}";
+
             var body = $@"
                 <h2>Yêu cầu đặt lại mật khẩu</h2>
                 <p>Nhấn vào liên kết bên dưới để đặt lại mật khẩu:</p>

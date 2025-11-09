@@ -65,11 +65,13 @@ namespace api.Controllers
                 {
                     return Unauthorized("Invalid Password");
                 }
+                var roles = await _userManager.GetRolesAsync(user);
                 return Ok(new NewUserDto
                 {
                     FullName = user.FullName,
                     Email = user.Email,
-                    Token = await _tokenService.CreateToken(user)
+                    Token = await _tokenService.CreateToken(user),
+                    Role = roles.FirstOrDefault()
                 }); 
                 
             }
@@ -118,12 +120,14 @@ namespace api.Controllers
                     var errors = roleResult.Errors.Select(e => e.Description);
                     return BadRequest(new { Errors = errors });
                 }
+                var roles = await _userManager.GetRolesAsync(user);
                 return Ok(
                     new NewUserDto
                     {
                         FullName = user.FullName,
                         Email = user.Email,
-                        Token = await _tokenService.CreateToken(user)
+                        Token = await _tokenService.CreateToken(user),
+                        Role = roles.FirstOrDefault()
 
                     }
                 );

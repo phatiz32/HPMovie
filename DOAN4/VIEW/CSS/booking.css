@@ -1,0 +1,405 @@
+/* Booking Page */
+.booking-content {
+    padding: 40px 0;
+    background: #f5f5f5;
+    min-height: calc(100vh - 200px);
+}
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+/* Seating Section */
+.seating-section {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.movie-info-card {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.movie-poster img {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.movie-details h2 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 24px;
+}
+
+.movie-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.movie-meta span {
+    padding: 4px 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+.showtime-info p {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+/* Screen Section */
+.screen-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.screen {
+    background: linear-gradient(135deg, #333, #555);
+    color: white;
+    padding: 15px;
+    margin: 0 auto 10px;
+    border-radius: 8px;
+    max-width: 400px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.screen-notice {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Seating Map */
+.seating-map {
+    margin-bottom: 30px;
+}
+
+.seats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.seat-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.row-label {
+    width: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.seat {
+    width: 35px;
+    height: 35px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    transition: all 0.3s;
+    background: white;
+}
+
+.seat:hover {
+    border-color: #e50914;
+    transform: scale(1.1);
+}
+
+.seat.available {
+    border-color: #28a745;
+    background: #f8fff9;
+}
+
+.seat.selected {
+    border-color: #e50914;
+    background: #e50914;
+    color: white;
+}
+
+.seat.occupied {
+    border-color: #ccc;
+    background: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.seat.vip {
+    border-color: #ffd700;
+    background: #fff9e6;
+}
+
+.seat.occupied.vip {
+    background: #ffd700;
+    color: #333;
+}
+
+.aisle {
+    width: 40px;
+}
+
+/* Seat Legend */
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.seat-sample {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+}
+
+.seat-sample.available {
+    border-color: #28a745;
+    background: #f8fff9;
+}
+
+.seat-sample.selected {
+    border-color: #e50914;
+    background: #e50914;
+}
+
+.seat-sample.occupied {
+    border-color: #ccc;
+    background: #ccc;
+}
+
+.seat-sample.vip {
+    border-color: #ffd700;
+    background: #fff9e6;
+}
+
+/* Booking Summary */
+.booking-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.summary-card, .combo-offers {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card h3, .combo-offers h3 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 20px;
+}
+
+.selected-seats h4 {
+    margin-bottom: 15px;
+    color: #666;
+    font-size: 16px;
+}
+
+.seats-list {
+    min-height: 60px;
+    margin-bottom: 20px;
+}
+
+.seat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.seat-item:last-child {
+    border-bottom: none;
+}
+
+.seat-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.remove-seat {
+    background: none;
+    border: none;
+    color: #ff4444;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 5px;
+}
+
+.no-seats {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+}
+
+.price-breakdown {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.price-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid #333;
+    font-size: 18px;
+    color: #333;
+}
+
+.booking-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.booking-actions button {
+    flex: 1;
+    padding: 12px;
+}
+
+/* Combo Offers */
+.combo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.combo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+.combo-item:hover {
+    border-color: #e50914;
+}
+
+.combo-info h4 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.combo-info p {
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.combo-price {
+    color: #e50914;
+    font-weight: bold;
+}
+
+.btn-add-combo {
+    padding: 8px 15px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-add-combo:hover {
+    background: #555;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .booking-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .seating-section {
+        order: 1;
+    }
+    
+    .booking-summary {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-content {
+        padding: 20px 0;
+    }
+    
+    .seating-section, .summary-card, .combo-offers {
+        padding: 20px;
+    }
+    
+    .movie-info-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .movie-poster img {
+        width: 100px;
+        height: 150px;
+        margin: 0 auto;
+    }
+    
+    .seat {
+        width: 30px;
+        height: 30px;
+        font-size: 9px;
+    }
+    
+    .seat-legend {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .booking-actions {
+        flex-direction: column;
+    }
+}

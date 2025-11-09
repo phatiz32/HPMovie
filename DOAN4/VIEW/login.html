@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - CineMax</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">CineMax</a></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="movies.html">Phim</a></li>
+                    <li><a href="cinemas.html">Rạp chiếu</a></li>
+                    <li><a href="shop.html">Shop quà tặng</a></li>
+                    <li><a href="news.html">Tin mới & Ưu đãi</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <h2>Đăng nhập</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Nhập email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu</label>
+                            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+                        </div>
+                        <div class="form-options">
+                            <label class="remember-me">
+                                <input type="checkbox" name="remember"> Ghi nhớ đăng nhập
+                            </label>
+                            <a href="forgot-password.html" class="forgot-password">Quên mật khẩu?</a>
+                        </div>
+                        <button type="submit" class="btn-primary btn-full">Đăng nhập</button>
+                    </form>
+                    <div class="auth-switch">
+                        <p>Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p>
+                    </div>
+                </div>
+                <div class="auth-benefits">
+                    <h3>Lợi ích khi đăng nhập</h3>
+                    <ul>
+                        <li>Đặt vé nhanh chóng, dễ dàng</li>
+                        <li>Nhận thông báo về ưu đãi đặc biệt</li>
+                        <li>Tích lũy điểm thưởng và đổi quà</li>
+                        <li>Lưu lịch sử đặt vé và thanh toán</li>
+                        <li>Đánh giá phim và nhận đề xuất cá nhân hóa</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CineMax</h3>
+                    <p>Hệ thống rạp chiếu phim hiện đại với chất lượng dịch vụ hàng đầu.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên kết</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="movies.html">Phim</a></li>
+                        <li><a href="cinemas.html">Rạp chiếu</a></li>
+                        <li><a href="shop.html">Shop quà tặng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CineMax. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

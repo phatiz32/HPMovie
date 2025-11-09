@@ -1,0 +1,308 @@
+/* Contact Page */
+.contact-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/contact-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.contact-hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.contact-hero p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.contact-content {
+    padding: 60px 0;
+    background: #f5f5f5;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.contact-form-section, .contact-info-section {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-section h2, .contact-info-section h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #e50914;
+    box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-full {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+}
+
+.contact-methods {
+    margin-bottom: 40px;
+}
+
+.contact-method {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.contact-method:last-child {
+    border-bottom: none;
+}
+
+.method-icon {
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.method-info h3 {
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 18px;
+}
+
+.method-info p {
+    font-weight: 500;
+    color: #e50914;
+    margin-bottom: 5px;
+}
+
+.method-info small {
+    color: #666;
+    font-size: 12px;
+}
+
+.faq-section h3 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 22px;
+}
+
+.faq-list {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+    background: #f9f9f9;
+}
+
+.faq-toggle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e50914;
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-answer.active {
+    padding: 0 20px 20px;
+    max-height: 200px;
+}
+
+.faq-answer p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.cinemas-map {
+    padding: 60px 0;
+    background: white;
+}
+
+.cinemas-map h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    color: #333;
+}
+
+.map-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    background: #f9f9f9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.map-placeholder {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.map-placeholder p:first-child {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.cinemas-list {
+    padding: 30px;
+    background: white;
+}
+
+.cinemas-list h3 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 22px;
+}
+
+.cinema-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cinema-item:last-child {
+    border-bottom: none;
+}
+
+.cinema-item h4 {
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 18px;
+}
+
+.cinema-item p {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Success Message */
+.success-message {
+    background: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+}
+
+.success-message.show {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .contact-form-section, .contact-info-section {
+        padding: 30px 20px;
+    }
+    
+    .map-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-method {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .method-icon {
+        align-self: center;
+    }
+}

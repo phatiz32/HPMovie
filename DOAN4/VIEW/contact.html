@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - CineMax</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">CineMax</a></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="movies.html">Phim</a></li>
+                    <li><a href="cinemas.html">Rạp chiếu</a></li>
+                    <li><a href="shop.html">Shop quà tặng</a></li>
+                    <li><a href="news.html">Tin mới & Ưu đãi</a></li>
+                    <li><a href="contact.html" class="active">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Liên hệ với CineMax</h1>
+            <p>Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <h2>Gửi tin nhắn cho chúng tôi</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Họ và tên *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Chủ đề *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Chọn chủ đề</option>
+                                <option value="support">Hỗ trợ kỹ thuật</option>
+                                <option value="booking">Vấn đề đặt vé</option>
+                                <option value="feedback">Góp ý dịch vụ</option>
+                                <option value="partnership">Hợp tác kinh doanh</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Nội dung tin nhắn *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary btn-full">Gửi tin nhắn</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-section">
+                    <h2>Thông tin liên hệ</h2>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">📞</div>
+                            <div class="method-info">
+                                <h3>Hotline</h3>
+                                <p>1800-xxxx</p>
+                                <small>8:00 - 22:00 hàng ngày</small>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">📧</div>
+                            <div class="method-info">
+                                <h3>Email</h3>
+                                <p>support@cinemax.com</p>
+                                <small>Phản hồi trong 24h</small>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">🏢</div>
+                            <div class="method-info">
+                                <h3>Văn phòng</h3>
+                                <p>123 Nguyễn Trãi, Thanh Xuân, Hà Nội</p>
+                                <small>9:00 - 18:00 từ Thứ 2 - Thứ 6</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-section">
+                        <h3>Câu hỏi thường gặp</h3>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    Làm thế nào để đặt vé trực tuyến?
+                                    <span class="faq-toggle">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Bạn có thể đặt vé trực tuyến qua website hoặc ứng dụng di động của CineMax. Chọn phim, rạp, suất chiếu và ghế ngồi, sau đó thanh toán bằng thẻ ngân hàng, ví điện tử hoặc tiền mặt tại rạp.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    Tôi có thể hủy vé đã đặt không?
+                                    <span class="faq-toggle">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Vé có thể được hủy miễn phí trước giờ chiếu 2 tiếng. Sau thời gian này, phí hủy vé là 20% giá trị vé. Vé không thể hủy sau khi suất chiếu đã bắt đầu.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    Có ưu đãi nào cho học sinh, sinh viên?
+                                    <span class="faq-toggle">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Có, học sinh sinh viên được giảm 30% giá vé khi xuất trình thẻ học sinh/sinh viên còn hiệu lực. Ưu đãi áp dụng cho tất cả các ngày trong tuần.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cinemas Map -->
+    <section class="cinemas-map">
+        <div class="container">
+            <h2>Hệ thống rạp CineMax</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <p>🗺️ Bản đồ hệ thống rạp CineMax</p>
+                    <p><small>Trong ứng dụng thực tế, đây sẽ là bản đồ Google Maps hiển thị tất cả các rạp</small></p>
+                </div>
+                <div class="cinemas-list">
+                    <h3>Danh sách rạp</h3>
+                    <div class="cinema-item">
+                        <h4>CineMax Royal City</h4>
+                        <p>72A Nguyễn Trãi, Thanh Xuân, Hà Nội</p>
+                        <p>📞 024 1234 5678</p>
+                    </div>
+                    <div class="cinema-item">
+                        <h4>CineMax Vincom Center</h4>
+                        <p>191 Bà Triệu, Hai Bà Trưng, Hà Nội</p>
+                        <p>📞 024 2345 6789</p>
+                    </div>
+                    <div class="cinema-item">
+                        <h4>CineMax Aeon Mall</h4>
+                        <p>27 Cổ Linh, Long Biên, Hà Nội</p>
+                        <p>📞 024 3456 7890</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CineMax</h3>
+                    <p>Hệ thống rạp chiếu phim hiện đại với chất lượng dịch vụ hàng đầu.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên kết</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="movies.html">Phim</a></li>
+                        <li><a href="cinemas.html">Rạp chiếu</a></li>
+                        <li><a href="shop.html">Shop quà tặng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CineMax. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Box -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <h3>Hỗ trợ trực tuyến</h3>
+            <button class="close-chat" id="closeChat">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <p>Xin chào! Tôi có thể giúp gì cho bạn?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Nhập câu hỏi của bạn...">
+            <button id="sendMessage">Gửi</button>
+        </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle">💬</button>
+
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

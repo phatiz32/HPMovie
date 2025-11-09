@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phim - CineMax</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/movies.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">CineMax</a></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="movies.html" class="active">Phim</a></li>
+                    <li><a href="cinemas.html">Rạp chiếu</a></li>
+                    <li><a href="shop.html">Shop quà tặng</a></li>
+                    <li><a href="news.html">Tin mới & Ưu đãi</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Movies Filter -->
+    <section class="movies-filter">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="genreFilter">Thể loại:</label>
+                    <select id="genreFilter">
+                        <option value="all">Tất cả</option>
+                        <option value="action">Hành động</option>
+                        <option value="comedy">Hài</option>
+                        <option value="drama">Drama</option>
+                        <option value="horror">Kinh dị</option>
+                        <option value="sci-fi">Khoa học viễn tưởng</option>
+                        <option value="romance">Lãng mạn</option>
+                        <option value="animation">Hoạt hình</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="timeFilter">Thời gian:</label>
+                    <select id="timeFilter">
+                        <option value="all">Tất cả</option>
+                        <option value="now">Đang chiếu</option>
+                        <option value="upcoming">Sắp chiếu</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sortFilter">Sắp xếp:</label>
+                    <select id="sortFilter">
+                        <option value="popular">Phổ biến</option>
+                        <option value="rating">Đánh giá cao</option>
+                        <option value="newest">Mới nhất</option>
+                        <option value="oldest">Cũ nhất</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="movieSearch" placeholder="Tìm kiếm phim...">
+                    <button id="searchBtn">
+                        <span>🔍 Tìm kiếm</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Filters -->
+    <section class="advanced-filters">
+        <div class="container">
+            <h4>Lọc nhanh theo thể loại:</h4>
+            <div class="filter-tags">
+                <span class="filter-tag active" data-genre="all">Tất cả</span>
+                <span class="filter-tag" data-genre="action">Hành động</span>
+                <span class="filter-tag" data-genre="sci-fi">Khoa học viễn tưởng</span>
+                <span class="filter-tag" data-genre="comedy">Hài</span>
+                <span class="filter-tag" data-genre="drama">Drama</span>
+                <span class="filter-tag" data-genre="animation">Hoạt hình</span>
+                <span class="filter-tag" data-genre="romance">Lãng mạn</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Movies Section -->
+    <section class="movies-section">
+        <div class="container">
+            <div class="section-tabs">
+                <button class="tab-btn active" data-tab="now-showing">Đang chiếu</button>
+                <button class="tab-btn" data-tab="upcoming">Sắp chiếu</button>
+            </div>
+            
+            <!-- Now Showing Movies -->
+            <div class="tab-content active" id="now-showing">
+                <div class="movies-header">
+                    <h2>Phim đang chiếu</h2>
+                    <div class="movies-count">
+                        <span id="nowShowingCount">0</span> phim
+                    </div>
+                </div>
+                <div class="movies-grid" id="now-showing-movies">
+                    <!-- Movies will be loaded by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Upcoming Movies -->
+            <div class="tab-content" id="upcoming">
+                <div class="movies-header">
+                    <h2>Phim sắp chiếu</h2>
+                    <div class="movies-count">
+                        <span id="upcomingCount">0</span> phim
+                    </div>
+                </div>
+                <div class="movies-grid" id="upcoming-movies">
+                    <!-- Movies will be loaded by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more-section">
+                <button class="btn-load-more" id="loadMoreBtn">
+                    <span>📺 Xem thêm phim</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CineMax</h3>
+                    <p>Hệ thống rạp chiếu phim hiện đại với chất lượng dịch vụ hàng đầu.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên kết</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="movies.html">Phim</a></li>
+                        <li><a href="cinemas.html">Rạp chiếu</a></li>
+                        <li><a href="shop.html">Shop quà tặng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CineMax. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Chat Box -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <h3>Hỗ trợ trực tuyến</h3>
+            <button class="close-chat" id="closeChat">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <p>Xin chào! Tôi có thể giúp gì cho bạn?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Nhập câu hỏi của bạn...">
+            <button id="sendMessage">Gửi</button>
+        </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle">💬</button>
+
+    <script src="js/main.js"></script>
+    <script src="js/movies.js"></script>
+</body>
+</html>

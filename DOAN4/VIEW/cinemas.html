@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rạp chiếu - CineMax</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cinemas.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">CineMax</a></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="movies.html">Phim</a></li>
+                    <li><a href="cinemas.html" class="active">Rạp chiếu</a></li>
+                    <li><a href="shop.html">Shop quà tặng</a></li>
+                    <li><a href="news.html">Tin mới & Ưu đãi</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cinemas Hero -->
+    <section class="cinemas-hero">
+        <div class="container">
+            <h1>Hệ thống rạp chiếu CineMax</h1>
+            <p>Trải nghiệm điện ảnh đẳng cấp tại các rạp chiếu hiện đại</p>
+        </div>
+    </section>
+
+    <!-- Location Filter -->
+    <section class="location-filter">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="cityFilter">Thành phố:</label>
+                    <select id="cityFilter">
+                        <option value="all">Tất cả thành phố</option>
+                        <option value="hanoi">Hà Nội</option>
+                        <option value="hcm">TP. Hồ Chí Minh</option>
+                        <option value="danang">Đà Nẵng</option>
+                        <option value="cantho">Cần Thơ</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="districtFilter">Quận/Huyện:</label>
+                    <select id="districtFilter">
+                        <option value="all">Tất cả quận/huyện</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="cinemaSearch" placeholder="Tìm rạp chiếu...">
+                    <button id="searchCinemaBtn">Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cinemas List -->
+    <section class="cinemas-list">
+        <div class="container">
+            <h2>Danh sách rạp chiếu</h2>
+            <div class="cinemas-container" id="cinemasContainer">
+                <!-- Cinemas will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cinema Features -->
+    <section class="cinema-features">
+        <div class="container">
+            <h2>Tiện ích tại rạp</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <h3>Phòng chiếu IMAX</h3>
+                    <p>Trải nghiệm hình ảnh và âm thanh sống động với công nghệ IMAX tiên tiến</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💺</div>
+                    <h3>Ghế ngồi cao cấp</h3>
+                    <p>Ghế da êm ái, có thể ngả lưng và trang bị bàn để thức ăn</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍿</div>
+                    <h3>Combo ưu đãi</h3>
+                    <p>Nhiều lựa chọn combo bắp nước với giá ưu đãi hấp dẫn</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🅿️</div>
+                    <h3>Bãi đỗ xe rộng rãi</h3>
+                    <p>Bãi giữ xe miễn phí cho khách hàng với sức chứa lớn</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👶</div>
+                    <h3>Khu vực gia đình</h3>
+                    <p>Không gian riêng dành cho gia đình có trẻ nhỏ</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♿</div>
+                    <h3>Thiết kế cho người khuyết tật</h3>
+                    <p>Lối đi và chỗ ngồi thiết kế đặc biệt cho người khuyết tật</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CineMax</h3>
+                    <p>Hệ thống rạp chiếu phim hiện đại với chất lượng dịch vụ hàng đầu.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên kết</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="movies.html">Phim</a></li>
+                        <li><a href="cinemas.html">Rạp chiếu</a></li>
+                        <li><a href="shop.html">Shop quà tặng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CineMax. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cinema Detail Modal -->
+    <div class="modal" id="cinemaModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalCinemaName">Tên rạp</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cinema-detail">
+                    <div class="cinema-info">
+                        <div class="info-group">
+                            <h4>Thông tin rạp</h4>
+                            <p><strong>Địa chỉ:</strong> <span id="modalAddress"></span></p>
+                            <p><strong>Điện thoại:</strong> <span id="modalPhone"></span></p>
+                            <p><strong>Giờ mở cửa:</strong> <span id="modalHours"></span></p>
+                        </div>
+                        <div class="info-group">
+                            <h4>Tiện ích</h4>
+                            <div class="amenities" id="modalAmenities"></div>
+                        </div>
+                    </div>
+                    <div class="cinema-map">
+                        <h4>Bản đồ chỉ đường</h4>
+                        <div class="map-placeholder" id="cinemaMap">
+                            <!-- Map will be loaded here -->
+                            <p>Bản đồ đang tải...</p>
+                        </div>
+                        <button class="btn-primary" id="getDirections">Chỉ đường</button>
+                    </div>
+                </div>
+                <div class="showtimes-section">
+                    <h4>Lịch chiếu hôm nay</h4>
+                    <div class="showtimes-list" id="modalShowtimes">
+                        <!-- Showtimes will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Box -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <h3>Hỗ trợ trực tuyến</h3>
+            <button class="close-chat" id="closeChat">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <p>Xin chào! Tôi có thể giúp gì cho bạn?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Nhập câu hỏi của bạn...">
+            <button id="sendMessage">Gửi</button>
+        </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle">💬</button>
+
+    <script src="js/main.js"></script>
+    <script src="js/cinemas.js"></script>
+</body>
+</html>

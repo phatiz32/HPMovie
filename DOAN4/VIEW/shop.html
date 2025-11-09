@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop quà tặng - CineMax</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">CineMax</a></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="movies.html">Phim</a></li>
+                    <li><a href="cinemas.html">Rạp chiếu</a></li>
+                    <li><a href="shop.html" class="active">Shop quà tặng</a></li>
+                    <li><a href="news.html">Tin mới & Ưu đãi</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shop Hero -->
+    <section class="shop-hero">
+        <div class="container">
+            <h1>Shop Quà Tặng CineMax</h1>
+            <p>Khám phá bộ sưu tập quà tặng độc đáo dành cho fan điện ảnh</p>
+        </div>
+    </section>
+
+    <!-- Shop Categories -->
+    <section class="shop-categories">
+        <div class="container">
+            <div class="categories-nav">
+                <button class="category-btn active" data-category="all">Tất cả</button>
+                <button class="category-btn" data-category="popcorn">Combo bắp nước</button>
+                <button class="category-btn" data-category="merchandise">Đồ lưu niệm</button>
+                <button class="category-btn" data-category="voucher">Voucher ưu đãi</button>
+                <button class="category-btn" data-category="collectibles">Đồ sưu tầm</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-header">
+                <h2>Sản phẩm nổi bật</h2>
+                <div class="sort-options">
+                    <select id="sortProducts">
+                        <option value="popular">Phổ biến nhất</option>
+                        <option value="newest">Mới nhất</option>
+                        <option value="price-low">Giá thấp đến cao</option>
+                        <option value="price-high">Giá cao đến thấp</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="special-offers">
+        <div class="container">
+            <h2>Ưu đãi đặc biệt</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-badge">Hot</div>
+                    <h3>Combo Gia Đình</h3>
+                    <p class="offer-price">199.000<sup>đ</sup></p>
+                    <p class="offer-desc">2 bắp lớn + 4 nước + 1 snack</p>
+                    <button class="btn-primary">Mua ngay</button>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">-30%</div>
+                    <h3>Voucher Thành Viên</h3>
+                    <p class="offer-price">500.000<sup>đ</sup></p>
+                    <p class="offer-desc">Giảm 30% cho tất cả vé xem phim</p>
+                    <button class="btn-primary">Mua ngay</button>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">Mới</div>
+                    <h3>Set Spider-Man</h3>
+                    <p class="offer-price">350.000<sup>đ</sup></p>
+                    <p class="offer-desc">Áo thun + Mũ + Túi Spider-Man</p>
+                    <button class="btn-primary">Mua ngay</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CineMax</h3>
+                    <p>Hệ thống rạp chiếu phim hiện đại với chất lượng dịch vụ hàng đầu.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên kết</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="movies.html">Phim</a></li>
+                        <li><a href="cinemas.html">Rạp chiếu</a></li>
+                        <li><a href="shop.html">Shop quà tặng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CineMax. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+  
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Giỏ hàng của bạn</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Tổng cộng:</span>
+                <span id="cartTotal">0<sup>đ</sup></span>
+            </div>
+            <button class="btn-primary btn-checkout">Thanh toán</button>
+        </div>
+    </div>
+
+    <!-- Cart Toggle -->
+    <button class="cart-toggle" id="cartToggle">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+    <!-- Chat Box -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <h3>Hỗ trợ trực tuyến</h3>
+            <button class="close-chat" id="closeChat">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <p>Xin chào! Tôi có thể giúp gì cho bạn?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Nhập câu hỏi của bạn...">
+            <button id="sendMessage">Gửi</button>
+        </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle">💬</button>
+
+    <script src="js/main.js"></script>
+    <script src="js/shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - CineMax</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class='bx bx-movie-play'></i>
+                    <span class="logo-text">CineMax <span class="admin-badge">Admin</span></span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class='bx bx-chevron-left'></i>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-item">
+                    <a href="#dashboard" class="nav-link">
+                        <i class='bx bx-home-alt'></i>
+                        <span class="link-text">Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="movie.html" class="nav-link">
+                        <i class='bx bx-movie'></i>
+                        <span class="link-text">Quản lý Phim</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#showtimes" class="nav-link">
+                        <i class='bx bx-time'></i>
+                        <span class="link-text">Lịch chiếu</span>
+                    </a>
+                </div>
+                <div class="nav-item active">
+                    <a href="#" class="nav-link">
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                        <span class="link-text">Thống kê</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#cinemas" class="nav-link">
+                        <i class='bx bx-building'></i>
+                        <span class="link-text">Rạp chiếu</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Admin">
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">Nguyễn Văn Admin</span>
+                        <span class="user-role">Quản trị viên</span>
+                    </div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class='bx bx-log-out'></i>
+                    <span>Đăng xuất</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class='bx bx-menu'></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span>Thống kê doanh thu</span>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="header-actions">
+                        <button class="action-btn theme-toggle" id="themeToggle">
+                            <i class='bx bx-moon'></i>
+                        </button>
+                    </div>
+                    <div class="current-time" id="currentTime"></div>
+                </div>
+            </header>
+            
+            <div class="page-content">
+                <div class="admin-page" id="statistics">
+                    <h2>Thống kê doanh thu</h2>
+
+                    <div class="statistic-filters">
+    <!-- Thống kê theo năm (phim & tháng) -->
+    <div class="filter-year">
+        <label for="yearInput">Nhập năm:</label>
+        <input type="number" id="yearInput" value="2025" min="2000" max="2100">
+        <button id="loadRevenueBtn">Xem thống kê</button>
+    </div>
+
+    <!-- Thống kê theo ngày -->
+    <div class="filter-day">
+        <label>Chọn khoảng thời gian:</label>
+        <input type="date" id="startDate">
+        <input type="date" id="endDate">
+        <button id="loadRevenueByDayBtn">Xem thống kê theo ngày</button>
+    </div>
+    
+</div>
+<div class="statistic-export">
+    <!-- Export theo năm (phim & tháng) -->
+    <button id="exportByMovieBtn">Export Excel theo phim</button>
+    <button id="exportByMonthBtn">Export Excel theo tháng</button>
+
+    <!-- Export theo ngày -->
+    <button id="exportByDayBtn">Export Excel theo ngày</button>
+</div>
+
+
+
+                    <h3>Doanh thu theo phim</h3>
+                    <table id="revenueByMovieTable">
+                        <thead>
+                            <tr>
+                                <th>Movie ID</th>
+                                <th>Movie Title</th>
+                                <th>Total Revenue</th>
+                                <th>Total Tickets</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4" style="text-align: center; color: #999;">Nhấn "Xem thống kê" để tải dữ liệu</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Doanh thu theo tháng</h3>
+                    <table id="revenueByMonthTable">
+                        <thead>
+                            <tr>
+                                <th>Month/Year</th>
+                                <th>Total Revenue</th>
+                                <th>Total Tickets</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3" style="text-align: center; color: #999;">Nhấn "Xem thống kê" để tải dữ liệu</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Doanh thu theo ngày</h3>
+                    <table id="revenueByDayTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Total Revenue</th>
+                                <th>Total Tickets</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3" style="text-align: center; color: #999;">Nhấn "Xem thống kê" để tải dữ liệu</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>Biểu đồ doanh thu theo tháng</h3>
+                    <canvas id="revenueChart" width="800" height="400"></canvas>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = 
+                now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+    <script src="js/admin.js"></script>
+    <script src="js/getuser.js"></script>
+</body>
+</html>

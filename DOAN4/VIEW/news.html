@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin mới & Ưu đãi - CineMax</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/news.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">CineMax</a></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="movies.html">Phim</a></li>
+                    <li><a href="cinemas.html">Rạp chiếu</a></li>
+                    <li><a href="shop.html">Shop quà tặng</a></li>
+                    <li><a href="news.html" class="active">Tin mới & Ưu đãi</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- News Hero -->
+    <section class="news-hero">
+        <div class="container">
+            <h1>Tin mới & Ưu đãi</h1>
+            <p>Cập nhật những thông tin mới nhất và ưu đãi hấp dẫn từ CineMax</p>
+        </div>
+    </section>
+
+    <!-- News Categories -->
+    <section class="news-categories">
+        <div class="container">
+            <div class="categories-nav">
+                <button class="category-btn active" data-category="all">Tất cả</button>
+                <button class="category-btn" data-category="news">Tin tức</button>
+                <button class="category-btn" data-category="offers">Ưu đãi</button>
+                <button class="category-btn" data-category="events">Sự kiện</button>
+                <button class="category-btn" data-category="movies">Tin phim</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured News -->
+    <section class="featured-news">
+        <div class="container">
+            <h2>Tin nổi bật</h2>
+            <div class="featured-grid" id="featuredNews">
+                <!-- Featured news will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- News Grid -->
+    <section class="news-grid-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tất cả tin tức</h2>
+                <div class="sort-options">
+                    <select id="sortNews">
+                        <option value="newest">Mới nhất</option>
+                        <option value="oldest">Cũ nhất</option>
+                        <option value="popular">Phổ biến</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="news-container" id="newsContainer">
+                <!-- News will be loaded by JavaScript -->
+            </div>
+            
+            <div class="load-more">
+                <button class="btn-secondary" id="loadMoreBtn">Xem thêm tin tức</button>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CineMax</h3>
+                    <p>Hệ thống rạp chiếu phim hiện đại với chất lượng dịch vụ hàng đầu.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên kết</h3>
+                    <ul>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="movies.html">Phim</a></li>
+                        <li><a href="cinemas.html">Rạp chiếu</a></li>
+                        <li><a href="shop.html">Shop quà tặng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CineMax. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+   
+    </div>
+
+    <!-- Chat Box -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <h3>Hỗ trợ trực tuyến</h3>
+            <button class="close-chat" id="closeChat">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <p>Xin chào! Tôi có thể giúp gì cho bạn?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Nhập câu hỏi của bạn...">
+            <button id="sendMessage">Gửi</button>
+        </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle">💬</button>
+
+    <script src="js/main.js"></script>
+    <script src="js/news.js"></script>
+</body>
+</html>
