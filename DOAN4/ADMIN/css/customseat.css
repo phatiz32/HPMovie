@@ -1,0 +1,120 @@
+/* Reset cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body */
+body {
+    background-color: #f4f4f9;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Controls */
+.controls {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 30px;
+}
+
+.controls label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.controls input[type="text"],
+.controls input[type="number"],
+.controls select {
+    padding: 6px 10px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: auto;
+}
+
+.controls button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    background-color: #45a049;
+}
+
+/* Grid container */
+#grid {
+    display: grid;
+    gap: 5px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+/* Each cell */
+.cell {
+    width: 35px;
+    height: 35px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 12px;
+    font-weight: bold;
+    user-select: none;
+}
+
+/* Different seat types */
+.EMPTY {
+    background-color: #f0f0f0;
+}
+
+.NORMAL {
+    background-color: #2196F3;
+    color: #fff;
+}
+
+.VIP {
+    background-color: #FF9800;
+    color: #fff;
+}
+
+/* Hover effect */
+.cell:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* JSON output */
+#output {
+    width: 100%;
+    max-width: 900px;
+    min-height: 150px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-family: monospace;
+    font-size: 14px;
+    background-color: #fafafa;
+    resize: vertical;
+}

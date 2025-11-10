@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sp6glDU3ocv6oQIhwy/X/HkXoJbgKMrLVw5e1KdewdE=",
+  "Hash": "dFO3qdjnR21/esjRnDamgcCR1tLNujZXdh3FywzTuyU=",
   "Source": "api",
   "BasePath": "_content/api",
   "Mode": "Default",
@@ -112,6 +112,25 @@
       "OriginalItemSpec": "wwwroot\\uploads\\0ff112a2-3fac-4256-a8e0-7e02024db1b4.webp"
     },
     {
+      "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\1ea27cd6-185f-4504-a4bb-7d392adb26de.jpg",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "uploads/1ea27cd6-185f-4504-a4bb-7d392adb26de.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\1ea27cd6-185f-4504-a4bb-7d392adb26de.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\23aa5c7c-0c0c-4a8a-863b-ecee617a79a5.jpg",
       "SourceId": "api",
       "SourceType": "Discovered",
@@ -169,6 +188,25 @@
       "OriginalItemSpec": "wwwroot\\uploads\\5d5beabe-10aa-4844-99e1-b911bc51a11c.jpg"
     },
     {
+      "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\8d2e48ec-8606-49e7-8016-38efa91c542e.jpg",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "uploads/8d2e48ec-8606-49e7-8016-38efa91c542e.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\8d2e48ec-8606-49e7-8016-38efa91c542e.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\9029f496-7f21-4f0d-af6a-d53bae5b52a3.jpg",
       "SourceId": "api",
       "SourceType": "Discovered",
@@ -224,6 +262,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\ba97032c-ebbe-4656-8538-c9d3cee6702c.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\c38d053c-b33e-4532-bab0-a867b0b24759.jpg",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "uploads/c38d053c-b33e-4532-bab0-a867b0b24759.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\c38d053c-b33e-4532-bab0-a867b0b24759.jpg"
     },
     {
       "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\d1c4d315-1cc2-4b03-8e2b-106aaafe294e.jpg",

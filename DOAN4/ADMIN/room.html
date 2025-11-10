@@ -31,8 +31,8 @@
                         <span class="link-text">Dashboard</span>
                     </a>
                 </div>
-                <div class="nav-item active">
-                    <a href="#movies" class="nav-link">
+                <div class="nav-item ">
+                    <a href="movie.html" class="nav-link">
                         <i class='bx bx-movie'></i>
                         <span class="link-text">Quản lý Phim</span>
                     </a>
@@ -44,15 +44,15 @@
                     </a>
                 </div>
                 <div class="nav-item ">
-                    <a href="#" class="nav-link">
+                    <a href="admin.html" class="nav-link">
                         <i class='bx bx-bar-chart-alt-2'></i>
                         <span class="link-text">Thống kê</span>
                     </a>
                 </div>
-                <div class="nav-item">
+                <div class="nav-item active">
                     <a href="#cinemas" class="nav-link">
                         <i class='bx bx-building'></i>
-                        <span class="link-text">Rạp chiếu</span>
+                        <span class="link-text">Phòng chiếu</span>
                     </a>
                 </div>
             </nav>
@@ -82,7 +82,7 @@
                         <i class='bx bx-menu'></i>
                     </button>
                     <div class="breadcrumb">
-                        <span>Quản lí phim</span>
+                        <span>Quản lí phòng chiếu</span>
                     </div>
                 </div>
                 
@@ -96,65 +96,108 @@
                 </div>
             </header>
             <div class="page-content">
-    <h2>Quản lý Phim</h2>
-    <div class="movie-actions">
-        <input type="text" id="searchMovieInput" placeholder="Tìm phim...">
-        <button id="btnAddMovie">Thêm Phim</button>
+    <h2>Quản lý Phòng Chiếu</h2>
+
+    <div class="room-actions">
+        <button id="btnAutoRoom">Tạo phòng tự động</button>
+        <a href="customseat.html"><button>Tạo phòng tùy chỉnh</button></a>
     </div>
 
-    <table id="movieTable">
+    <table id="roomTable" border="1" style="margin-top:10px; width:100%;">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Status</th>
-                <th>Release Date</th>
-                <th>Actions</th>
+                <th>Tên phòng</th>
+                <th>Loại phòng</th>
+                <th>Hành động</th>
             </tr>
         </thead>
-        <tbody>
-            <!-- Dữ liệu phim sẽ được JS điền vào đây -->
-        </tbody>
-        
+        <tbody></tbody>
     </table>
-    <div id="pagination" class="pagination"></div>
-    <!-- Form thêm/sửa phim -->
-    <div id="movieFormContainer" style="display:none;">
-        <h3 id="movieFormTitle"></h3>
-        <form id="movieForm">
-            <label>Title:</label>
-            <input type="text" name="title" required>
-            <label>Genre:</label>
-            <input type="text" name="genre" required>
-            <label>Duration:</label>
-            <input type="number" name="duration" required>
-            <label>Release Date:</label>
-            <input type="date" name="releaseDate" required>
-            <label>Agelimit:</label>
-            <input type="text" name="agelimit" required>
-            <label>Language:</label>
-            <input type="text" name="language" required>
-            <label>Director:</label>
-            <input type="text" name="director" required>
-            <label>Actor:</label>
-            <input type="text" name="actor" required>
-            <label id="statusLabel" style="display:none">Status:</label>
-            <select name="status" id="statusSelect" style="display:none">
-                <option value="COMINGSOON">COMINGSOON</option>
-                <option value="NOWSHOWING">NOWSHOWING</option>
-                <option value="ENDED">ENDED</option>
-            </select>
-            <label>Trailer URL:</label>
-            <input type="text" name="trailerUrl">
-            <label>Poster:</label>
-            <input type="file" name="posterFile">
-            <button type="submit" id="btnSubmitMovie">Lưu</button>
-            <button type="button" id="btnCancelMovie">Hủy</button>
-        </form>
 
+    <!-- Modal tự động -->
+    <div id="autoModal" class="modal" style="display:none; padding:10px; border:1px solid #ccc; margin-top:10px; background:#fff;">
+        <h3>Tạo phòng tự động</h3>
+        <label>Tên phòng: <input type="text" id="autoName"/></label>
+        <label>Số hàng: <input type="number" id="autoRows" value="5"/></label>
+        <label>Số cột: <input type="number" id="autoCols" value="8"/></label>
+        <label>Loại phòng: 
+            <select id="autoType">
+                <option value="NORMAL">NORMAL</option>
+                <option value="VIP">VIP</option>
+            </select>
+        </label>
+        <button id="autoSave">Lưu</button>
+        <button id="autoClose">Đóng</button>
     </div>
 </div>
+
+<script>
+    const roomTableBody = document.querySelector("#roomTable tbody");
+    const btnAutoRoom = document.getElementById("btnAutoRoom");
+    const btnCustomRoom = document.getElementById("btnCustomRoom");
+    const autoModal = document.getElementById("autoModal");
+    const customModal = document.getElementById("customModal");
+    loadRooms();
+
+    async function loadRooms(){
+        const res = await fetch("http://localhost:5136/api/Room/room");
+        const data = await res.json();
+        roomTableBody.innerHTML = data.map(r=>`
+            <tr>
+                <td>${r.id}</td>
+                <td>${r.name}</td>
+                <td>${r.roomType || 'NORMAL'}</td>
+                <td><button class="btnDelete" data-id="${r.id}">Xóa</button></td>
+            </tr>
+        `).join("");
+        document.querySelectorAll(".btnDelete").forEach(btn=>{
+            btn.addEventListener("click", async ()=>{
+                const id = btn.dataset.id;
+                if(confirm("Bạn có chắc muốn xóa phòng này?")){
+                    await fetch(`http://localhost:5136/api/Room/${id}`, { method:"DELETE" });
+                    loadRooms();
+                }
+            });
+        });
+    }
+
+    btnAutoRoom.addEventListener("click", ()=> autoModal.style.display="block");
+    btnCustomRoom.addEventListener("click", ()=> customModal.style.display="block");
+    document.getElementById("autoClose").addEventListener("click", ()=> autoModal.style.display="none");
+    document.getElementById("closeModal").addEventListener("click", ()=> customModal.style.display="none");
+
+    document.getElementById("autoSave").addEventListener("click", async ()=>{
+        const payload = {
+            name: document.getElementById("autoName").value.trim(),
+            rowCount: parseInt(document.getElementById("autoRows").value),
+            columnCount: parseInt(document.getElementById("autoCols").value),
+            roomType: document.getElementById("autoType").value
+        };
+        if(!payload.name){ alert("Nhập tên phòng!"); return; }
+
+        try{
+           const token = localStorage.getItem("token"); // Hoặc cách bạn lưu token
+const res = await fetch("http://localhost:5136/api/Room", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(payload)
+});
+
+            if(!res.ok){ alert("Lỗi khi tạo phòng"); return; }
+            alert("✅ Tạo phòng thành công!");
+            autoModal.style.display="none";
+            loadRooms();
+        }catch(err){ alert("❌ Lỗi: "+err.message); }
+    });
+    
+
+loadRooms();
+</script>
+
 
         </main>
     </div>
@@ -170,6 +213,5 @@
         updateTime();
     </script>
     <script src="js/getuser.js"></script>
-    <script src="js/movie.js"></script>
 </body>
 </html>

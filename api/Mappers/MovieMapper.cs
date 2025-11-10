@@ -33,6 +33,7 @@ namespace api.Mappers
         {
             return new ToMovieDto
             {
+                Id=movie.Id,
                 Title = movie.Title,
                 Genre = movie.Genre,
                 Duration = movie.Duration,
