@@ -17,7 +17,10 @@ namespace api.Models
         public DateTime ExpireAt { get; set; }
         public ICollection<BookingDetail> BookingDetails { get; set; } = new List<BookingDetail>();
         public ICollection<BookingCombo> BookingCombos { get; set; } = new List<BookingCombo>();
-        public Payment? Payment{ get; set; }
+        public Payment? Payment { get; set; }
+        public string? TransactionHash { get; set; }  // Hash giao dịch blockchain
+        public string? WalletAddress { get; set; }    // Địa chỉ ví thanh toán
+        public decimal? PaidAmount { get; set; }      // Số CET đã trả
         
     }
 }

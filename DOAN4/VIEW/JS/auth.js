@@ -31,7 +31,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         if (result.role === "Admin") {
             window.location.href = "../ADMIN/admin.html";
         } else {
-            window.location.href = "index.html";
+            window.location.href = "../ADMIN/payment.html";
         }
 
     } catch (error) {
