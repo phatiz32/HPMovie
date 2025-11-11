@@ -69,6 +69,12 @@ namespace api.Controllers
             }
             return Ok(movie);
         }
+        [HttpGet("active-movie")]
+        public async Task<IActionResult> getActiveMovie()
+        {
+            var movie = await _movieRepository.GetActiveMovieAsync();
+            return Ok(movie);
+        }
         
 
     }

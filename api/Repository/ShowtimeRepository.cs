@@ -45,7 +45,6 @@ namespace api.Repository
             await _context.ShowTimes.AddAsync(showtime);
             await _context.SaveChangesAsync();
             return showtime;
-
         }
 
         public async Task<List<Seat>> GetSeatsByShowtimeIdAsync(int ShowTimeId)

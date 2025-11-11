@@ -34,6 +34,24 @@ namespace api.Repository
             return room;
         }
 
+        public async Task DeleteRoomAsyn(int roomid)
+        {
+            var room = await _context.Rooms.Include(r => r.Seats).FirstOrDefaultAsync(r => r.Id == roomid);
+            if (room == null)
+            {
+                throw new Exception("Room not found");
+            }
+            bool checkShowtime = await _context.ShowTimes.AnyAsync(s => s.RoomId == roomid && s.StartTime >= DateTime.Now);
+            if (checkShowtime)
+            {
+                throw new Exception("Cannot delete room because it is used in upcoming showtimes.");
+            }
+            _context.Seats.RemoveRange(room.Seats);
+            _context.Rooms.Remove(room);
+            await _context.SaveChangesAsync();
+
+        }
+
         public async Task<List<GetRoomDto>> GetRoomAsync()
         {
             return await _context.Rooms.Select(s => new GetRoomDto

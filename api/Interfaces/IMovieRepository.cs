@@ -15,5 +15,7 @@ namespace api.Interfaces
         public Task<PagedResult<ToMovieDto>> GetMoviesAsync(QueryObject queryObject);
         public Task<ToMovieDto> UpdateMovieAsync(int id, UpdateMovieDto dto);
         public Task<ToMovieDto> GetMovieByIdAsync(int id);
+        public Task<List<Movie>> GetActiveMovieAsync();
+
     }
 }

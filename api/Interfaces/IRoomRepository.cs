@@ -11,5 +11,6 @@ namespace api.Interfaces
     {
         Task<Room> CreateRoom(CreateRoomDto dto);
         Task<List<GetRoomDto>> GetRoomAsync();
+        Task DeleteRoomAsyn(int roomid);
     }
 }

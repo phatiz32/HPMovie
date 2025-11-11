@@ -71,6 +71,20 @@ namespace api.Controllers
 
 
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteRoom(int id)
+        {
+            try
+            {
+                await _room.DeleteRoomAsyn(id);
+                return Ok(new { message = "Room deleted successfully" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+        }
+
 
     }
 }

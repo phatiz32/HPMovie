@@ -51,6 +51,13 @@ namespace api.Repository
 
         }
 
+        public async Task<List<Movie>> GetActiveMovieAsync()
+        {
+            var movie = await _context.Movies.Where(m => m.Status != "ENDED").ToListAsync();
+            return movie;
+
+        }
+
         public async Task<ToMovieDto> GetMovieByIdAsync(int id)
         {
             var movies = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
