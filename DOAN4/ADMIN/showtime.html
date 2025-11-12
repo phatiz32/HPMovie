@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - CineMax</title>
     <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/movie.css">
+    <link rel="stylesheet" href="css/showtime.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
 </head>
@@ -25,18 +25,18 @@
 
             <nav class="sidebar-nav">
                 <div class="nav-item">
-                    <a href="#dashboard" class="nav-link">
-                        <i class='bx bx-home-alt'></i>
-                        <span class="link-text">Dashboard</span>
+                    <a href="account.html" class="nav-link">
+                        <i class='bx bx-user'></i>
+                        <span class="link-text">Tài khoản nhân viên</span>
                     </a>
                 </div>
-                <div class="nav-item active">
+                <div class="nav-item ">
                     <a href="movie.html" class="nav-link">
                         <i class='bx bx-movie'></i>
                         <span class="link-text">Quản lý Phim</span>
                     </a>
                 </div>
-                <div class="nav-item">
+                <div class="nav-item active">
                     <a href="#showtimes" class="nav-link">
                         <i class='bx bx-time'></i>
                         <span class="link-text">Lịch chiếu</span>
@@ -95,6 +95,50 @@
                 </div>
             </header>
             <div class="page-content">
+                <div class="showtime-container">
+                    <div class="showtime-header">
+                        <h2>Quản lý Suất Chiếu</h2>
+                        <div class="showtime-actions">
+                            <input type="date" id="showtimeDate" />
+                            <button id="btnLoadShowtime">Tải suất chiếu</button>
+                            <button id="btnAddShowtime">+ Thêm suất chiếu</button>
+                        </div>
+                    </div>
+
+                    <div class="showtime-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tên phim</th>
+                                    <th>Suất chiếu</th>
+                                    <th>Phòng</th>
+                                </tr>
+                            </thead>
+                            <tbody id="showtimeTableBody">
+                                <!-- Dữ liệu suất chiếu sẽ được thêm ở đây -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Form thêm suất chiếu -->
+                    <div class="showtime-form-container" id="showtimeFormContainer" style="display: none;">
+                        <h3>Thêm Suất Chiếu</h3>
+                        <form id="showtimeForm">
+                            <label>Chọn phim:</label>
+                            <select id="movieSelect"></select>
+
+                            <label>Chọn phòng chiếu:</label>
+                            <select id="roomSelect"></select>
+
+                            <label>Thời gian bắt đầu:</label>
+                            <input type="datetime-local" id="startTime" required>
+                            <label>Giá vé cơ bản (VNĐ):</label>
+                            <input type="number" id="baseTicketPrice" min="0" placeholder="Nhập giá vé..." required>
+                            <button type="submit">Tạo suất chiếu</button>
+                            <button type="button" id="btnCancelShowtime">Hủy</button>
+                        </form>
+                    </div>
+                </div>
 
             </div>
     
@@ -115,6 +159,6 @@
         updateTime();
     </script>
     <script src="js/getuser.js"></script>
-    <script src="js/movie.js"></script>
+    <script src="js/showtime.js"></script>
 </body>
 </html>

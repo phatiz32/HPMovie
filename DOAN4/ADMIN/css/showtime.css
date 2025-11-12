@@ -1,0 +1,138 @@
+/* showtime.css */
+
+/* Page content */
+.page-content {
+    background-color: #e6f0ff; /* xanh da trời nhạt */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    min-height: 80vh;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header section */
+.showtime-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.showtime-header h2 {
+    color: #003366; /* xanh đậm */
+    margin: 0;
+}
+
+/* Action buttons & inputs */
+.showtime-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.showtime-actions input,
+.showtime-actions select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    outline: none;
+    font-size: 14px;
+}
+
+.showtime-actions button {
+    background-color: #3399ff; /* xanh da trời */
+    color: white;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+
+.showtime-actions button:hover {
+    background-color: #007acc;
+}
+
+/* Table */
+.showtime-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.showtime-table th,
+.showtime-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.showtime-table th {
+    background-color: #3399ff;
+    color: white;
+}
+
+.showtime-table tbody tr:nth-child(even) {
+    background-color: #f2f9ff;
+}
+
+/* Form container */
+.showtime-form-container {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.showtime-form-container h3 {
+    margin-top: 0;
+    color: #003366;
+}
+
+.showtime-form-container label {
+    display: block;
+    margin: 10px 0 4px;
+    color: #003366;
+    font-weight: 500;
+}
+
+.showtime-form-container input,
+.showtime-form-container select {
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    outline: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.showtime-form-container button {
+    background-color: #3399ff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.showtime-form-container button:hover {
+    background-color: #007acc;
+}
+
+/* Cancel button */
+#btnCancelShowtime {
+    background-color: #ccc;
+    color: #333;
+}
+
+#btnCancelShowtime:hover {
+    background-color: #999;
+}

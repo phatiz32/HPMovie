@@ -46,11 +46,31 @@ namespace api.Controllers
                 await _accountManager.ImportCreateStaff(dto.File);
                 return Ok(new { message = "Import successfully" });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
                 return BadRequest(ex.Message);
             }
+        }
+        [HttpGet("staff")]
+        public async Task<IActionResult> getStaffAccount()
+        {
+            var listStaff = await _accountManager.GetStaffAccount();
+            return Ok(listStaff);
+        }
+        [HttpDelete("{accountId}")]
+        public async Task<IActionResult> DeleteAccountAsyn(string accountId)
+        {
+            try
+            {
+                var account = await _accountManager.DeleteAccountAsync(accountId);
+                return Ok(account);
+                
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
 
     }

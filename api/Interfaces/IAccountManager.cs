@@ -11,5 +11,7 @@ namespace api.Interfaces
     {
         Task<AppUser> CreateStaffAsync(CreateStaffDto dto);
         Task ImportCreateStaff(IFormFile formFile);
+        Task<List<object>> GetStaffAccount();
+        Task<bool> DeleteAccountAsync(string accountId);
     }
 }

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Dtos.ShowTime;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
 using api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Nethereum.Contracts.Standards.ENS.Registrar.ContractDefinition;
 
 namespace api.Controllers
 {
@@ -80,6 +82,12 @@ namespace api.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+        [HttpGet("get-all")]
+        public async Task<IActionResult> GetAllShowtime([FromQuery] QueryObject query)
+        {
+            var showtime = await _showtime.GetAllShowtime(query);
+            return Ok(showtime);
         }
 
     }

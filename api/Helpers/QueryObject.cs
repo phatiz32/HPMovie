@@ -12,5 +12,6 @@ namespace api.Helpers
         public string? Genre { get; set; }
         public string? Status { get; set; }
         public string? SearchName { get; set; }
+        public DateTime? Date { get; set; }
     }
 }

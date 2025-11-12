@@ -1,0 +1,159 @@
+
+
+/* Phần bao ngoài nội dung */
+.page-content {
+    background-color: #e6f0ff; /* xanh da trời nhạt */
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px;
+    min-height: 80vh;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header của phần nhân viên */
+.staff-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.staff-header h2 {
+    color: #003366;
+    margin: 0;
+    font-size: 22px;
+}
+
+/* Khu vực nút hành động */
+.staff-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.staff-actions button {
+    background-color: #3399ff; /* xanh da trời */
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+
+.staff-actions button:hover {
+    background-color: #007acc; /* xanh đậm hơn khi hover */
+}
+
+.staff-actions input[type="file"] {
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: white;
+}
+
+/* Bảng danh sách nhân viên */
+.staff-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.staff-table th,
+.staff-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.staff-table th {
+    background-color: #3399ff;
+    color: white;
+    font-weight: 600;
+}
+
+.staff-table tbody tr:nth-child(even) {
+    background-color: #f2f9ff;
+}
+
+.staff-table tbody tr:hover {
+    background-color: #d9ecff;
+    transition: 0.2s;
+}
+
+/* Form thêm nhân viên */
+.staff-form-container {
+    background-color: white;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    animation: fadeIn 0.3s ease;
+    max-width: 500px;
+}
+
+.staff-form-container h3 {
+    color: #003366;
+    margin-top: 0;
+    border-left: 4px solid #3399ff;
+    padding-left: 8px;
+}
+
+/* Label và input trong form */
+.staff-form-container label {
+    display: block;
+    margin: 10px 0 4px;
+    color: #003366;
+    font-weight: 500;
+}
+
+.staff-form-container input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    outline: none;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.staff-form-container input:focus {
+    border-color: #3399ff;
+    box-shadow: 0 0 5px rgba(51,153,255,0.5);
+}
+
+/* Các nút trong form */
+.staff-form-container button {
+    background-color: #3399ff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.staff-form-container button:hover {
+    background-color: #007acc;
+}
+
+/* Nút hủy */
+#btnCancelStaff {
+    background-color: #ccc;
+    color: #333;
+}
+
+#btnCancelStaff:hover {
+    background-color: #999;
+}
+
+/* Hiệu ứng mượt khi mở form */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

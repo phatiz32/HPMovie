@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
 using api.Dtos.ShowTime;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
 using api.Models;
@@ -41,10 +42,41 @@ namespace api.Repository
             {
                 throw new Exception("Existing showtime");
             }
+            if (movie.Status != "SHOWING")
+            {
+                movie.Status = "SHOWING";
+            }
             var showtime = dto.ToCreateShowtime(movie.Duration);
             await _context.ShowTimes.AddAsync(showtime);
             await _context.SaveChangesAsync();
             return showtime;
+        }
+
+        public async Task<PagedResult<ShowTime>> GetAllShowtime(QueryObject queryObject)
+        {
+            var query = _context.ShowTimes
+                                .Include(s => s.Movie)
+                                .Include(s => s.Room)
+                                .Where(s => s.IsActive);
+            if (queryObject.Date.HasValue)
+            {
+                var start = queryObject.Date.Value;
+                var end = start.AddDays(1);
+                query = query.Where(s => s.StartTime >= start && s.StartTime < end);
+            }
+            query = query.OrderByDescending(s => s.StartTime);
+            var totalItems = await query.CountAsync();
+            var items = await query
+                            .Skip((queryObject.PageNumber - 1) * queryObject.Pagesize)
+                            .Take(queryObject.Pagesize)
+                            .ToListAsync();
+            return new PagedResult<ShowTime>
+            {
+                Items = items,
+                ToTalItems = totalItems,
+                PageNumber = queryObject.PageNumber,
+                PageSize = queryObject.Pagesize
+            };
         }
 
         public async Task<List<Seat>> GetSeatsByShowtimeIdAsync(int ShowTimeId)
@@ -104,5 +136,7 @@ namespace api.Repository
                 )
             );
         }
+
+        
     }
 }

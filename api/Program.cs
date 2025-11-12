@@ -110,8 +110,10 @@ builder.Services.AddScoped<IStatisticRepository, StatisticRepository>();
 builder.Services.AddScoped<IAccountManager, AccountManager>();
 builder.Services.AddSingleton<IWeb3Service, Web3Service>();
 builder.Services.AddScoped<ICryptoPaymentService, CryptoPaymentService>();
+builder.Services.AddScoped<ShowtimeStatusService>();
 
 builder.Services.AddHostedService<BookingCleanupService>();
+builder.Services.AddHostedService<ShowtimeCleanUpService>();
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {

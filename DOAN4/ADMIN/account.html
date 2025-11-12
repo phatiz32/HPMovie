@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - CineMax</title>
     <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/movie.css">
+    <link rel="stylesheet" href="css/account.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -26,12 +26,12 @@
 
             <nav class="sidebar-nav">
                 <div class="nav-item">
-                    <a href="account.html" class="nav-link">
+                    <a href="" class="nav-link active">
                         <i class='bx bx-user'></i>
                         <span class="link-text">Tài khoản nhân viên</span>
                     </a>
                 </div>
-                <div class="nav-item active">
+                <div class="nav-item ">
                     <a href="movie.html" class="nav-link">
                         <i class='bx bx-movie'></i>
                         <span class="link-text">Quản lý Phim</span>
@@ -82,7 +82,7 @@
                         <i class='bx bx-menu'></i>
                     </button>
                     <div class="breadcrumb">
-                        <span>Quản lí phim</span>
+                        <span>Quản lí tài khoản</span>
                     </div>
                 </div>
                 
@@ -96,66 +96,61 @@
                 </div>
             </header>
             <div class="page-content">
-    <h2>Quản lý Phim</h2>
-    <div class="movie-actions">
-        <input type="text" id="searchMovieInput" placeholder="Tìm phim...">
-        <button id="btnAddMovie">Thêm Phim</button>
+                <div class="staff-container">
+    <div class="staff-header">
+        <h2>Quản lý nhân viên</h2>
+        <div class="staff-actions">
+            <button id="btnAddStaff">+ Thêm nhân viên</button>
+            <input type="file" id="staffExcelFile" />
+            <button id="btnImportExcel">Import Excel</button>
+        </div>
     </div>
 
-    <table id="movieTable">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Status</th>
-                <th>Release Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Dữ liệu phim sẽ được JS điền vào đây -->
-        </tbody>
-        
-    </table>
-    <div id="pagination" class="pagination"></div>
-    <!-- Form thêm/sửa phim -->
-    <div id="movieFormContainer" style="display:none;">
-        <h3 id="movieFormTitle"></h3>
-        <form id="movieForm">
-            <label>Title:</label>
-            <input type="text" name="title" required>
-            <label>Genre:</label>
-            <input type="text" name="genre" required>
-            <label>Duration:</label>
-            <input type="number" name="duration" required>
-            <label>Release Date:</label>
-            <input type="date" name="releaseDate" required>
-            <label>Agelimit:</label>
-            <input type="text" name="agelimit" required>
-            <label>Language:</label>
-            <input type="text" name="language" required>
-            <label>Director:</label>
-            <input type="text" name="director" required>
-            <label>Actor:</label>
-            <input type="text" name="actor" required>
-            <label id="statusLabel" style="display:none">Status:</label>
-            <select name="status" id="statusSelect" style="display:none">
-                <option value="COMINGSOON">COMINGSOON</option>
-                <option value="NOWSHOWING">NOWSHOWING</option>
-                <option value="ENDED">ENDED</option>
-            </select>
-            <label>Trailer URL:</label>
-            <input type="text" name="trailerUrl">
-            <label>Poster:</label>
-            <input type="file" name="posterFile">
-            <button type="submit" id="btnSubmitMovie">Lưu</button>
-            <button type="button" id="btnCancelMovie">Hủy</button>
-        </form>
+    <div class="staff-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên nhân viên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="staffTableBody">
+                <!-- Dữ liệu nhân viên sẽ được load ở đây -->
+            </tbody>
+        </table>
+    </div>
 
+    <!-- Form thêm nhân viên -->
+    <div class="staff-form-container" id="staffFormContainer" style="display:none;">
+        <h3>Thêm nhân viên</h3>
+        <form id="staffForm">
+            <label>Họ tên:</label>
+            <input type="text" id="staffName" required>
+
+            <label>Email:</label>
+            <input type="email" id="staffEmail" required>
+
+            <label>Mật khẩu:</label>
+            <input type="password" id="staffPassword" required>
+
+            <label>Ngày sinh:</label>
+            <input type="date" id="birthDay" required>
+
+            <label>Số điện thoại:</label>
+            <input type="text" id="phoneNumber" required>
+
+           
+
+            <button type="submit">Tạo tài khoản</button>
+            <button type="button" id="btnCancelStaff">Hủy</button>
+        </form>
     </div>
 </div>
 
+            </div>
+    
         </main>
     </div>
 
@@ -170,6 +165,6 @@
         updateTime();
     </script>
     <script src="js/getuser.js"></script>
-    <script src="js/movie.js"></script>
+    <script src="js/account.js"></script>
 </body>
-</html>
+</html> 
