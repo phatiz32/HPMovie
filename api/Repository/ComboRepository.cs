@@ -96,5 +96,16 @@ namespace api.Repository
                 PageSize = query.Pagesize
             };
         }
+
+        public async Task UpdateStatusAsync(int comboId, bool status)
+        {
+            var combo= await _context.Combos.FirstOrDefaultAsync(s=>s.Id==comboId);
+            if (combo == null)
+            {
+                throw new Exception("combo not found");
+            }
+            combo.IsActive= status;
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -8,6 +8,7 @@ using api.Dtos.Combo;
 using api.Helpers;
 using api.Interfaces;
 using api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -24,6 +25,7 @@ namespace api.Controllers
             _combo = combo;
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateComboAsync(CreateComboDto dto)
         {
             if (!ModelState.IsValid)
@@ -49,6 +51,19 @@ namespace api.Controllers
             {
                 await _combo.AddComboToOrderAsync(bookingOrderId, combos);
                 return Ok();
+            }catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpPut("{comboId}")]
+        public async Task<IActionResult> UpdateStatusAsync(int comboId,[FromForm] bool status)
+        {
+            try
+            {
+                await _combo.UpdateStatusAsync(comboId,status);
+                return Ok("update successful");
+                
             }catch(Exception e)
             {
                 return BadRequest(e.Message);

@@ -129,6 +129,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseStaticFiles();
 app.UseExceptionHandler("/error");
 app.UseHttpsRedirection();
 app.UseCors("AllowFrontend");

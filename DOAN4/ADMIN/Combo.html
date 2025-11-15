@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - CineMax</title>
     <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/movie.css">
+    <link rel="stylesheet" href="css/combo.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -31,7 +31,7 @@
                         <span class="link-text">Tài khoản nhân viên</span>
                     </a>
                 </div>
-                <div class="nav-item active">
+                <div class="nav-item ">
                     <a href="movie.html" class="nav-link">
                         <i class='bx bx-movie'></i>
                         <span class="link-text">Quản lý Phim</span>
@@ -55,7 +55,7 @@
                         <span class="link-text">Phòng chiếu</span>
                     </a>
                 </div>
-                <div class="nav-item">
+                <div class="nav-item active">
                     <a href="Combo.html" class="nav-link">
                         <i class='bx bx-food-menu'></i>
                         <span class="link-text">Quản lí Combo</span>
@@ -100,64 +100,64 @@
                     </div>
                     <div class="current-time" id="currentTime"></div>
                 </div>
+                
             </header>
-            <div class="page-content">
-    <h2>Quản lý Phim</h2>
-    <div class="movie-actions">
-        <input type="text" id="searchMovieInput" placeholder="Tìm phim...">
-        <button id="btnAddMovie">Thêm Phim</button>
+           <div class="page-content">
+
+    <!-- Nút mở/đóng form -->
+    <button id="toggleCreateForm" class="btn-primary" style="margin-bottom: 20px;">
+        + Tạo Combo
+    </button>
+
+    <!-- Form thêm Combo (ẨN lúc đầu) -->
+    <div class="combo-form" id="createComboForm" style="display:none; animation: fadeIn .3s;">
+        <h2>Thêm Combo</h2>
+
+        <div class="form-group">
+            <label>Tên Combo</label>
+            <input type="text" id="comboName" placeholder="Nhập tên combo...">
+        </div>
+
+        <div class="form-group">
+            <label>Mô tả</label>
+            <textarea id="comboDescription" placeholder="Nhập mô tả combo..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Giá Combo</label>
+            <input type="number" id="comboPrice" placeholder="Nhập giá combo...">
+        </div>
+
+        <div class="form-group">
+            <label>Ảnh Combo</label>
+            <input type="file" id="comboImage" accept="image/*">
+        </div>
+
+        <button id="btnAddCombo" class="btn-primary">Thêm Combo</button>
     </div>
 
-    <table id="movieTable">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Status</th>
-                <th>Release Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Dữ liệu phim sẽ được JS điền vào đây -->
-        </tbody>
-        
-    </table>
-    <div id="pagination" class="pagination"></div>
-    <!-- Form thêm/sửa phim -->
-    <div id="movieFormContainer" style="display:none;">
-        <h3 id="movieFormTitle"></h3>
-        <form id="movieForm">
-            <label>Title:</label>
-            <input type="text" name="title" required>
-            <label>Genre:</label>
-            <input type="text" name="genre" required>
-            <label>Duration:</label>
-            <input type="number" name="duration" required>
-            <label>Release Date:</label>
-            <input type="date" name="releaseDate" required>
-            <label>Agelimit:</label>
-            <input type="text" name="agelimit" required>
-            <label>Language:</label>
-            <input type="text" name="language" required>
-            <label>Director:</label>
-            <input type="text" name="director" required>
-            <label>Actor:</label>
-            <input type="text" name="actor" required>
-            <label id="statusLabel" style="display:none">Status:</label>
-            <select name="status" id="statusSelect" style="display:none">
-                <option value="COMINGSOON">COMINGSOON</option>
-                <option value="NOWSHOWING">NOWSHOWING</option>
-                <option value="ENDED">ENDED</option>
-            </select>
-            <label>Trailer URL:</label>
-            <input type="text" name="trailerUrl">
-            <label>Poster:</label>
-            <input type="file" name="posterFile">
-            <button type="submit" id="btnSubmitMovie">Lưu</button>
-            <button type="button" id="btnCancelMovie">Hủy</button>
-        </form>
+    <hr>
+
+    <!-- Danh sách Combo -->
+    <div class="combo-list">
+        <h2>Danh sách Combo</h2>
+        <table class="combo-table">
+            <thead>
+                <tr>
+                    <th>Ảnh</th>
+                    <th>Tên</th>
+                    <th>Giá</th>
+                    <th>Mô tả</th>
+                    <th>Trạng Thái</th>
+                </tr>
+            </thead>
+            <tbody id="comboTableBody"></tbody>
+        </table>
+        <div class="pagination" id="comboPagination" style="margin-top: 20px; display:flex; gap:10px;">
+    <button id="prevPage" class="btn-primary">Prev</button>
+    <span id="currentPage">1</span>
+    <button id="nextPage" class="btn-primary">Next</button>
+</div>
 
     </div>
 </div>
@@ -176,6 +176,7 @@
         updateTime();
     </script>
     <script src="js/getuser.js"></script>
-    <script src="js/movie.js"></script>
+    <script src="js/combo.js"></script>
+
 </body>
 </html>

@@ -14,5 +14,7 @@ namespace api.Interfaces
         Task<Combo> CreateComboAsync(CreateComboDto dto);
         Task<PagedResult<Combo>> GetComboAsync(QueryObject query);
         Task<bool> AddComboToOrderAsync(int bookingOrderId, List<BookingComboDto> combos);
+        Task UpdateStatusAsync(int comboId,bool status);
+
     }
 }

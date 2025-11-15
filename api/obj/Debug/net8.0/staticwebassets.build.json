@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dFO3qdjnR21/esjRnDamgcCR1tLNujZXdh3FywzTuyU=",
+  "Hash": "Cs3/CoXinc68uFlJmnJfwra159R2A2m6vxwjTctLPoU=",
   "Source": "api",
   "BasePath": "_content/api",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\qrcodes\\ticket_15.png"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\061cba2a-cc8d-4f5a-be5b-8f4b545ba5b1.jpg",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "uploads/061cba2a-cc8d-4f5a-be5b-8f4b545ba5b1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\061cba2a-cc8d-4f5a-be5b-8f4b545ba5b1.jpg"
     },
     {
       "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\0ff112a2-3fac-4256-a8e0-7e02024db1b4.webp",
@@ -319,6 +338,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\d77ac67d-c6e1-40f9-a2f8-5f7ea3503130.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\e203f18c-cb91-41a6-82d7-ff85d9508e02.jpg",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "uploads/e203f18c-cb91-41a6-82d7-ff85d9508e02.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\e203f18c-cb91-41a6-82d7-ff85d9508e02.jpg"
     },
     {
       "Identity": "C:\\Users\\Admin\\HPMovie\\api\\wwwroot\\uploads\\e6308e1b-5245-4f38-87f4-941d5f8451a1.png",

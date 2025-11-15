@@ -1,0 +1,122 @@
+/* ===================== Page Content ===================== */
+.page-content {
+    background-color: #e6f0ff; /* xanh nhạt */
+    padding: 20px;
+    border-radius: 12px;
+    min-height: 80vh;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===================== Combo Form ===================== */
+.combo-form {
+    background-color: #ffffff; /* trắng */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s;
+}
+
+.combo-form h2 {
+    margin-bottom: 15px;
+    color: #1a73e8; /* xanh dương */
+}
+
+.combo-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.combo-form label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #1a73e8;
+}
+
+.combo-form input[type="text"],
+.combo-form input[type="number"],
+.combo-form textarea,
+.combo-form input[type="file"] {
+    padding: 8px 10px;
+    border: 1px solid #b3d1ff;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.combo-form input:focus,
+.combo-form textarea:focus {
+    border-color: #1a73e8;
+}
+
+/* ===================== Buttons ===================== */
+.btn-primary {
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #155ab6;
+}
+
+/* ===================== Combo Table ===================== */
+.combo-list h2 {
+    color: #1a73e8;
+    margin-bottom: 12px;
+}
+
+.combo-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.combo-table th, .combo-table td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #d0e2ff;
+}
+
+.combo-table th {
+    background-color: #cce0ff;
+    color: #1a73e8;
+}
+
+.combo-table tr:hover {
+    background-color: #e6f0ff;
+}
+
+.combo-table td img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ===================== Pagination ===================== */
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination span {
+    font-weight: 600;
+    color: #1a73e8;
+}
+
+/* ===================== Animation ===================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
