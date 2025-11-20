@@ -200,3 +200,79 @@
     background-color: #2980b9;
     transform: translateY(-2px);
 }
+/* ===========================
+   STYLE CHO SELECT
+   =========================== */
+#movieForm select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#movieForm select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+    outline: none;
+}
+
+/* ===========================
+   STYLE CHO GENRE CHECKBOXES
+   =========================== */
+/* =====================================
+   GENRE CHECKBOXES - UI dạng button tag
+   ===================================== */
+.genre-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.genre-checkboxes label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: #f1f4ff;
+    border: 1px solid #d4dcf7;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+}
+
+/* Ẩn checkbox mặc định */
+.genre-checkboxes input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Hover hiệu ứng nhẹ */
+.genre-checkboxes label:hover {
+    background: #e4ecff;
+    border-color: #b4c7ff;
+    transform: translateY(-2px);
+}
+
+/* Khi được chọn */
+.genre-checkboxes input[type="checkbox"]:checked + label,
+.genre-checkboxes label:has(input:checked) {
+    background: #007bff;
+    border-color: #007bff;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 123, 255, 0.35);
+}
+
+/* Hiệu ứng nhấn */
+.genre-checkboxes label:active {
+    transform: scale(0.97);
+}

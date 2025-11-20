@@ -132,15 +132,34 @@
             <label>Title:</label>
             <input type="text" name="title" required>
             <label>Genre:</label>
-            <input type="text" name="genre" required>
+            <div class="genre-checkboxes">
+            <label><input type="checkbox" name="genre" value="Action"> Action</label>
+            <label><input type="checkbox" name="genre" value="Comedy"> Comedy</label>
+            <label><input type="checkbox" name="genre" value="Drama"> Drama</label>
+            <label><input type="checkbox" name="genre" value="Horror"> Horror</label>
+            <label><input type="checkbox" name="genre" value="Animation"> Animation</label>
+            <label><input type="checkbox" name="genre" value="Romance"> Romance</label>
+            </div>
             <label>Duration:</label>
-            <input type="number" name="duration" required>
+            <input type="number" name="duration" min="1" required>
             <label>Release Date:</label>
             <input type="date" name="releaseDate" required>
             <label>Agelimit:</label>
-            <input type="text" name="agelimit" required>
+            <select name="agelimit" required>
+            <option value="P">P - Mọi độ tuổi</option>
+            <option value="K">K - Trẻ em</option>
+            <option value="T13">T13 - Trên 13 tuổi</option>
+            <option value="T16">T16 - Trên 16 tuổi</option>
+            <option value="T18">T18 - Trên 18 tuổi</option>
+            </select>
             <label>Language:</label>
-            <input type="text" name="language" required>
+            <select name="language" required>
+            <option value="Vietnamese">Vietnamese</option>
+            <option value="English">English</option>
+            <option value="Korean">Korean</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Chinese">Chinese</option>
+            </select>
             <label>Director:</label>
             <input type="text" name="director" required>
             <label>Actor:</label>

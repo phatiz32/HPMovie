@@ -14,6 +14,7 @@ const statusSelect = document.getElementById("statusSelect");
 
 let editingMovieId = null;
 
+
 // Load danh sách phim
 async function loadMovies(searchName = "", pageNumber = 1, pageSize = 3) {
     try {
@@ -88,10 +89,19 @@ btnCancelMovie.addEventListener("click", () => {
 // Submit form (Thêm/Sửa)
 movieForm.addEventListener("submit", async e => {
     e.preventDefault();
+        const selectedGenres = Array.from(
+    movieForm.querySelectorAll("input[name='genre']:checked")
+).map(cb => cb.value);
+
+        
+        if(selectedGenres.length === 0) {
+            alert("Vui lòng chọn ít nhất 1 thể loại phim!");
+            return;
+        }
 
     const formData = new FormData();
     formData.append("Title", movieForm.elements["title"].value);
-    formData.append("Genre", movieForm.elements["genre"].value);
+    formData.append("Genre", selectedGenres.join(","));
     formData.append("Duration", movieForm.elements["duration"].value);
     formData.append("ReleaseDate", movieForm.elements["releaseDate"].value);
     formData.append("AgeLimit", movieForm.elements["agelimit"].value);
@@ -144,7 +154,18 @@ async function showEditMovieForm(movieId) {
         });
         const movie = await res.json();
         editingMovieId = movieId;
+        // --- Reset tất cả checkbox trước ---
+        movieForm.querySelectorAll("input[name='genre']").forEach(cb => cb.checked = false);
 
+        // --- Check các checkbox theo dữ liệu movie.genre ---
+        if (movie.genre) {
+            const genres = movie.genre.split(","); // giả sử API trả "Action,Comedy"
+            movieForm.querySelectorAll("input[name='genre']").forEach(cb => {
+                if (genres.includes(cb.value)) {
+                    cb.checked = true;
+                }
+            });
+        }
         movieFormTitle.textContent = "Sửa Phim";
         movieForm.elements["title"].value = movie.title;
         movieForm.elements["genre"].value = movie.genre;
@@ -167,6 +188,12 @@ async function showEditMovieForm(movieId) {
         alert("Lấy thông tin phim thất bại!");
     }
 }
+const durationInput=document.querySelector("input[name='duration']");
+durationInput.addEventListener("input",function(){
+    if(this.value<=0){
+        this.value="";
+    }
+});
 
 // Tìm kiếm
 searchInput.addEventListener("input", e => loadMovies(e.target.value));
