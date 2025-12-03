@@ -16,6 +16,8 @@ namespace api.Interfaces
         public Task<ToMovieDto> UpdateMovieAsync(int id, UpdateMovieDto dto);
         public Task<ToMovieDto> GetMovieByIdAsync(int id);
         public Task<List<Movie>> GetActiveMovieAsync();
+        public Task<List<Movie>> GetMoviesShowing();
+        public Task<List<Movie>> GetMovieComingSoon();
 
     }
 }

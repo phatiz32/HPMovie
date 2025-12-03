@@ -50,7 +50,7 @@ namespace api.Repository
             return movie;
 
         }
-
+        
         public async Task<List<Movie>> GetActiveMovieAsync()
         {
             var movie = await _context.Movies.Where(m => m.Status != "ENDED").ToListAsync();
@@ -63,6 +63,13 @@ namespace api.Repository
             var movies = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
             if (movies == null) return null;
             return movies.ToMovieDto();
+        }
+
+        public async Task<List<Movie>> GetMovieComingSoon()
+        {
+            var movie= await _context.Movies.Where(m=>m.Status=="COMINGSOON").OrderBy(m=>m.ReleaseDate).ToListAsync();
+            return movie;
+
         }
 
         public async Task<PagedResult<ToMovieDto>> GetMoviesAsync(QueryObject queryObject)
@@ -95,6 +102,12 @@ namespace api.Repository
                 PageSize = queryObject.Pagesize
             };
              
+        }
+
+        public async Task<List<Movie>> GetMoviesShowing()
+        {
+            var movie= await _context.Movies.Where(s=>s.Status=="SHOWING").OrderBy(s=>s.ReleaseDate).ToListAsync();
+            return movie;
         }
 
         public async Task<ToMovieDto> UpdateMovieAsync(int id, UpdateMovieDto dto)

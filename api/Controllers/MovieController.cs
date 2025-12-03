@@ -75,6 +75,18 @@ namespace api.Controllers
             var movie = await _movieRepository.GetActiveMovieAsync();
             return Ok(movie);
         }
+        [HttpGet("showing-movie")]
+        public async Task<IActionResult> getShowingMovie()
+        {
+            var showingMovie= await _movieRepository.GetMoviesShowing();
+            return Ok(showingMovie);
+        }
+        [HttpGet("coming-movie")]
+        public async Task<IActionResult> getComingMovie()
+        {
+            var comingMovie= await _movieRepository.GetMovieComingSoon();
+            return Ok(comingMovie);
+        }
         
 
     }
