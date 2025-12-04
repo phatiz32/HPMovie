@@ -87,7 +87,12 @@ namespace api.Controllers
             var comingMovie= await _movieRepository.GetMovieComingSoon();
             return Ok(comingMovie);
         }
-        
+        [HttpGet("hot-movie")]
+        public async Task<IActionResult> getHotMovie()
+        {
+            var hotMovie= await _movieRepository.GetHotMovie();
+            return Ok(hotMovie);
+        }
 
     }
 }

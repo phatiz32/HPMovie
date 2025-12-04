@@ -58,6 +58,32 @@ namespace api.Repository
 
         }
 
+        public async Task<List<Movie>> GetHotMovie()
+        {
+            var revenueQuery = await _context.BookingDetails
+                                        .Where(b => b.BookingOrder.Payment != null &&
+                                                    b.BookingOrder.Payment.PaidAt.Year == DateTime.Now.Year)
+                                        .GroupBy(b => new
+                                        {
+                                            b.ShowTime.Movie.Id
+                                        })
+                                        .Select(g => new
+                                        {
+                                            MovieId = g.Key.Id,
+                                            TotalRevenue = g.Sum(x => x.Price)
+                                        })
+                                        .OrderByDescending(x => x.TotalRevenue)
+                                        .ToListAsync();
+            var movieIds = revenueQuery.Select(x => x.MovieId).ToList();
+            var movies = await _context.Movies
+                                        .Where(m => movieIds.Contains(m.Id))
+                                        .ToListAsync();
+            var orderedMovies = movies
+                    .OrderByDescending(m => revenueQuery.First(r => r.MovieId == m.Id).TotalRevenue)
+                    .ToList();
+            return orderedMovies;
+        }
+
         public async Task<ToMovieDto> GetMovieByIdAsync(int id)
         {
             var movies = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
@@ -81,7 +107,7 @@ namespace api.Repository
             }
             if (!string.IsNullOrEmpty(queryObject.Genre))
             {
-                movieQuery = movieQuery.Where(m => m.Genre.ToLower() == queryObject.Genre.ToLower());
+                movieQuery = movieQuery.Where(m => m.Genre.Contains(queryObject.Genre));
             }
             if (!string.IsNullOrEmpty(queryObject.Status))
             {

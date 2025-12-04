@@ -18,6 +18,7 @@ namespace api.Interfaces
         public Task<List<Movie>> GetActiveMovieAsync();
         public Task<List<Movie>> GetMoviesShowing();
         public Task<List<Movie>> GetMovieComingSoon();
+        public Task<List<Movie>> GetHotMovie();
 
     }
 }

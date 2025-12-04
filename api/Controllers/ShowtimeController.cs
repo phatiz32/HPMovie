@@ -49,6 +49,7 @@ namespace api.Controllers
                                 .Select(g => new
                                 {
                                     MovieTitle = g.Key,
+                                    PosterUrl=g.First().Movie.PosterUrl,
                                     ShowTime = g.Select(s => new
                                     {
                                         s.StartTime,

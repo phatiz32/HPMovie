@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rạp chiếu - CineMax</title>
+    <title>Doraemon: Chi tiết phim</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/cinemas.css">
+    <link rel="stylesheet" href="css/home.css">
+   <link rel="stylesheet" href="CSS/movie-detail.css">
 </head>
 <body>
-    <!-- Header -->
+
+    <!-- Header (giữ nguyên) -->
     <header>
         <div class="container">
             <div class="logo">
@@ -18,36 +20,53 @@
                 <ul>
                     <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="movies.html">Phim</a></li>
-                    <li><a href="cinemas.html" class="active">Rạp chiếu</a></li>
+                    <li><a href="cinemas.html">Rạp chiếu</a></li>
                     <li><a href="shop.html">Shop quà tặng</a></li>
                     <li><a href="news.html">Tin mới & Ưu đãi</a></li>
                     <li><a href="contact.html">Liên hệ</a></li>
                 </ul>
             </nav>
-            <div class="user-actions">
+            <div class="user-actions" id="userActions">
                 <a href="login.html" class="btn-login">Đăng nhập</a>
                 <a href="register.html" class="btn-register">Đăng ký</a>
             </div>
         </div>
     </header>
 
-        <section class="cinema-schedule container">
+    <section class="movie-detail">
 
-            <!-- Thanh chọn ngày -->
-            <div class="date-selector" id="dateSelector"></div>
+    <div class="movie-poster">
+        <img src="" alt="Poster phim">
+    </div>
 
-            <!-- Khu vực hiển thị danh sách phim -->
-            <div id="cinemaList" class="cinema-list"></div>
+    <div class="movie-info">
+        <h2></h2>
 
-        </section>
+        <p><strong>Thể loại:</strong> <span class="genre"></span></p>
+        <p><strong>Thời lượng:</strong> <span class="duration"></span></p>
+        <p><strong>Ngày phát hành:</strong> <span class="release-date"></span></p>
+        <p><strong>Độ tuổi:</strong> <span class="age"></span></p>
+        <p><strong>Ngôn ngữ:</strong> <span class="language"></span></p>
+        <p><strong>Đạo diễn:</strong> <span class="director"></span></p>
+        <p><strong>Diễn viên:</strong> <span class="cast"></span></p>
+        <p><strong>Trạng thái:</strong> <span class="status"></span></p>
+
+        <a href="movies.html" class="btn-book">Đặt vé</a>
+
+        <div class="trailer-container">
+            <iframe src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+</section>
 
 
-    <!-- Footer -->
+    <!-- Footer (giữ nguyên) -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>CineMax</h3>
+                    <h3>HPCinema</h3>
                     <p>Hệ thống rạp chiếu phim hiện đại với chất lượng dịch vụ hàng đầu.</p>
                 </div>
                 <div class="footer-section">
@@ -82,8 +101,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="js/main.js"></script>
-    <script src="js/cinemas.js"></script>
+    <script src="JS/movie-detail.js"></script>
 </body>
 </html>

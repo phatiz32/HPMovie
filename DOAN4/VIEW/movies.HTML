@@ -24,7 +24,7 @@
                     <li><a href="contact.html">Liên hệ</a></li>
                 </ul>
             </nav>
-            <div class="user-actions">
+            <div class="user-actions" id="userActions">
                 <a href="login.html" class="btn-login">Đăng nhập</a>
                 <a href="register.html" class="btn-register">Đăng ký</a>
             </div>
@@ -35,40 +35,10 @@
     <section class="movies-filter">
         <div class="container">
             <div class="filter-container">
-                <div class="filter-group">
-                    <label for="genreFilter">Thể loại:</label>
-                    <select id="genreFilter">
-                        <option value="all">Tất cả</option>
-                        <option value="action">Hành động</option>
-                        <option value="comedy">Hài</option>
-                        <option value="drama">Drama</option>
-                        <option value="horror">Kinh dị</option>
-                        <option value="sci-fi">Khoa học viễn tưởng</option>
-                        <option value="romance">Lãng mạn</option>
-                        <option value="animation">Hoạt hình</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="timeFilter">Thời gian:</label>
-                    <select id="timeFilter">
-                        <option value="all">Tất cả</option>
-                        <option value="now">Đang chiếu</option>
-                        <option value="upcoming">Sắp chiếu</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="sortFilter">Sắp xếp:</label>
-                    <select id="sortFilter">
-                        <option value="popular">Phổ biến</option>
-                        <option value="rating">Đánh giá cao</option>
-                        <option value="newest">Mới nhất</option>
-                        <option value="oldest">Cũ nhất</option>
-                    </select>
-                </div>
                 <div class="search-box">
                     <input type="text" id="movieSearch" placeholder="Tìm kiếm phim...">
                     <button id="searchBtn">
-                        <span>🔍 Tìm kiếm</span>
+                        <span>Tìm kiếm</span>
                     </button>
                 </div>
             </div>
@@ -80,13 +50,12 @@
         <div class="container">
             <h4>Lọc nhanh theo thể loại:</h4>
             <div class="filter-tags">
-                <span class="filter-tag active" data-genre="all">Tất cả</span>
-                <span class="filter-tag" data-genre="action">Hành động</span>
-                <span class="filter-tag" data-genre="sci-fi">Khoa học viễn tưởng</span>
-                <span class="filter-tag" data-genre="comedy">Hài</span>
-                <span class="filter-tag" data-genre="drama">Drama</span>
-                <span class="filter-tag" data-genre="animation">Hoạt hình</span>
-                <span class="filter-tag" data-genre="romance">Lãng mạn</span>
+                <label><input type="checkbox" name="genre" value="Action"> Action</label>
+                <label><input type="checkbox" name="genre" value="Comedy"> Comedy</label>
+                <label><input type="checkbox" name="genre" value="Drama"> Drama</label>
+                <label><input type="checkbox" name="genre" value="Horror"> Horror</label>
+                <label><input type="checkbox" name="genre" value="Animation"> Animation</label>
+                <label><input type="checkbox" name="genre" value="Romance"> Romance</label>
             </div>
         </div>
     </section>
@@ -176,25 +145,8 @@
     </footer>
 
 
-    <!-- Chat Box -->
-    <div class="chat-box" id="chatBox">
-        <div class="chat-header">
-            <h3>Hỗ trợ trực tuyến</h3>
-            <button class="close-chat" id="closeChat">×</button>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="message bot-message">
-                <p>Xin chào! Tôi có thể giúp gì cho bạn?</p>
-            </div>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="chatInput" placeholder="Nhập câu hỏi của bạn...">
-            <button id="sendMessage">Gửi</button>
-        </div>
-    </div>
-    <button class="chat-toggle" id="chatToggle">💬</button>
-
     <script src="js/main.js"></script>
     <script src="js/movies.js"></script>
+     <script src="js/index.js"></script>
 </body>
 </html>
