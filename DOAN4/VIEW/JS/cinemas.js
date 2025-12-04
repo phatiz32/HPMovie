@@ -33,14 +33,13 @@ function renderDateSelector() {
 
         container.appendChild(item);
     }
-
-    // Load ngày hôm nay
+    
     loadShowtimes(today.toISOString().split("T")[0]);
 }
 
 renderDateSelector();
 
-// -------------------- Gọi API --------------------
+
 async function loadShowtimes(date) {
     const cinemaList = document.getElementById("cinemaList");
     cinemaList.innerHTML = `<p>Đang tải lịch chiếu...</p>`;
@@ -73,9 +72,12 @@ function renderMovies(data) {
         const times = movie.showTime
             .map(t => {
                 const time = new Date(t.startTime);
-                return `<span class="showtime">${time.getHours().toString().padStart(2, "0")}:${time.getMinutes().toString().padStart(2, "0")}</span>`;
+                const formatted = `${time.getHours().toString().padStart(2, "0")}:${time.getMinutes().toString().padStart(2, "0")}`;
+
+                return `<span class="showtime" data-id="${t.id}" onclick="goToSeatPage(${t.id})">${formatted}</span>`;
             })
             .join("");
+
 
         item.innerHTML = `
             <div class="movie-info">
@@ -90,3 +92,7 @@ function renderMovies(data) {
         container.appendChild(item);
     });
 }
+function goToSeatPage(showtimeId) {
+    window.location.href = `booking.html?showtimeId=${showtimeId}`;
+}
+

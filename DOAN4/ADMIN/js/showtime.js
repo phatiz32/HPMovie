@@ -45,7 +45,7 @@ showtimeForm.addEventListener("submit", async (e) => {
     const dto = {
         movieId: parseInt(movieSelect.value),
         roomId: parseInt(roomSelect.value),
-        startTime: new Date(document.getElementById("startTime").value).toISOString(),
+        startTime: document.getElementById("startTime").value,
         baseTicketPrice: parseFloat(document.getElementById("baseTicketPrice").value)
     };
     console.log(dto);
@@ -68,6 +68,7 @@ showtimeForm.addEventListener("submit", async (e) => {
 
         alert("Thêm suất chiếu thành công!");
         showtimeFormContainer.style.display = "none";
+        await loadShowtimes(); 
     } catch (err) {
         alert("Lỗi: " + err.message);
     }

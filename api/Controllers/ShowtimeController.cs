@@ -53,6 +53,7 @@ namespace api.Controllers
                                     ShowTime = g.Select(s => new
                                     {
                                         s.StartTime,
+                                        s.Id
                                     })
                                 });
             return Ok(result);

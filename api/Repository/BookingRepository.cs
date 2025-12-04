@@ -98,7 +98,6 @@ namespace api.Repository
             };
             
         }
-
         public async Task<List<BookingHistoryDto>> GetBookingHistoryAsyn(string userId)
         {
             var Booking = await _context.BookingOrders.Include(b => b.showTime)

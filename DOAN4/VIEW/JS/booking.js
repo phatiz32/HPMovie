@@ -1,231 +1,142 @@
-// Booking Page JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
-    const seatsContainer = document.getElementById('seatsContainer');
-    const selectedSeatsList = document.getElementById('selectedSeatsList');
-    const normalTicketCount = document.getElementById('normalTicketCount');
-    const vipTicketCount = document.getElementById('vipTicketCount');
-    const totalPrice = document.getElementById('totalPrice');
-    const continueToPayment = document.getElementById('continueToPayment');
+const API_SHOWTIME = "http://localhost:5136/api/Showtime/seats";
+const API_ORDER = "http://localhost:5136/api/Booking/create-order";
 
-    // Pricing
-    const PRICES = {
-        normal: 80000,
-        vip: 120000,
-        serviceFee: 10000
-    };
+let showtimeIdGlobal = null;
+let selectedSeatIds = [];
+let seats = [];
+let baseTicketPrice = 50000;
 
-    // Selected seats state
-    let selectedSeats = [];
+// -------------------- Load thông tin ghế --------------------
+async function loadSeats() {
+    const params = new URLSearchParams(window.location.search);
+    const showtimeId = params.get("showtimeId");
+    showtimeIdGlobal = showtimeId;
 
-    // Initialize
-    generateSeatingMap();
-    setupEventListeners();
-    loadBookingData();
+    if (!showtimeId) return;
 
-    function generateSeatingMap() {
-        const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L'];
-        const seatsPerRow = 12;
-        
-        rows.forEach(row => {
-            const seatRow = document.createElement('div');
-            seatRow.className = 'seat-row';
-            
-            // Add row label
-            const rowLabel = document.createElement('div');
-            rowLabel.className = 'row-label';
-            rowLabel.textContent = row;
-            seatRow.appendChild(rowLabel);
-            
-            // Generate seats for this row
-            for (let i = 1; i <= seatsPerRow; i++) {
-                const seatNumber = `${row}${i.toString().padStart(2, '0')}`;
-                
-                // Add aisle after seat 6
-                if (i === 7) {
-                    const aisle = document.createElement('div');
-                    aisle.className = 'aisle';
-                    seatRow.appendChild(aisle);
-                }
-                
-                const seat = document.createElement('div');
-                seat.className = 'seat available';
-                seat.textContent = i;
-                seat.dataset.seatId = seatNumber;
-                
-                // Randomly assign some seats as occupied and VIP for demo
-                if (Math.random() < 0.2) {
-                    seat.classList.remove('available');
-                    seat.classList.add('occupied');
-                } else if (Math.random() < 0.3) {
-                    seat.classList.add('vip');
-                }
-                
-                seatRow.appendChild(seat);
+    try {
+        const res = await fetch(`${API_SHOWTIME}/${showtimeId}`);
+        const data = await res.json();
+
+        seats = data.seats;
+        baseTicketPrice = data.baseTicketPrice || 50000;
+
+        document.getElementById("movieInfo").innerHTML = `
+            <p><strong>Phim:</strong> ${data.movieTitle}</p>
+            <p><strong>Giờ chiếu:</strong> ${new Date(data.startTime).toLocaleString('vi-VN', { 
+                weekday:'long', year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'
+            })}</p>
+            <p><strong>Phòng:</strong> ${data.roomName}</p>
+        `;
+
+        renderSeats(data.rowCount, data.columnCount, seats);
+        updateTotalPrice();
+
+    } catch (err) {
+        console.error("Lỗi fetch API:", err);
+    }
+}
+
+// -------------------- Render ghế --------------------
+function renderSeats(rows, cols, seats) {
+    const container = document.getElementById("seatContainer");
+    container.innerHTML = "";
+
+    let html = `<div class="seat-grid" style="display: grid; grid-template-columns: repeat(${cols}, 40px); gap: 8px;">`;
+
+    seats.forEach(seat => {
+        let seatClass = '';
+        if (!seat.isAvailable) seatClass = 'booked'; // ghế đã đặt
+        else seatClass = seat.seatType === 'VIP' ? 'vip available' : 'normal available';
+
+        html += `
+            <div class="seat ${seatClass}"
+                 data-seat="${seat.seatCode}"
+                 data-id="${seat.id}">
+                ${seat.seatCode}
+            </div>`;
+    });
+
+    html += `</div>`;
+    container.innerHTML = html;
+
+    // -------------------- Sự kiện click chọn ghế --------------------
+    const seatElements = container.querySelectorAll('.seat.available');
+    seatElements.forEach(el => {
+        el.addEventListener('click', () => {
+            const seatId = parseInt(el.dataset.id);
+            el.classList.toggle('selected');
+
+            if (selectedSeatIds.includes(seatId)) {
+                selectedSeatIds = selectedSeatIds.filter(id => id !== seatId);
+            } else {
+                selectedSeatIds.push(seatId);
             }
-            
-            seatsContainer.appendChild(seatRow);
+
+            updateTotalPrice();
         });
-    }
+    });
+}
 
-    function setupEventListeners() {
-        // Seat selection
-        seatsContainer.addEventListener('click', function(e) {
-            if (e.target.classList.contains('seat')) {
-                handleSeatSelection(e.target);
-            }
-        });
-
-        // Continue to payment
-        continueToPayment.addEventListener('click', function() {
-            if (selectedSeats.length === 0) {
-                alert('Vui lòng chọn ít nhất một ghế để tiếp tục.');
-                return;
-            }
-            
-            // Save booking data to localStorage
-            const bookingData = {
-                movie: getMovieData(),
-                seats: selectedSeats,
-                total: calculateTotalPrice(),
-                timestamp: new Date().toISOString()
-            };
-            
-            localStorage.setItem('cinemax_booking', JSON.stringify(bookingData));
-            
-            // Redirect to payment page (in real app)
-            alert('Chuyển hướng đến trang thanh toán...');
-            console.log('Booking data:', bookingData);
-        });
-
-        // Combo buttons
-        document.querySelectorAll('.btn-add-combo').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const comboName = this.closest('.combo-item').querySelector('h4').textContent;
-                alert(`Đã thêm ${comboName} vào đơn hàng!`);
-            });
-        });
-    }
-
-    function handleSeatSelection(seat) {
-        if (seat.classList.contains('occupied')) {
-            return; // Can't select occupied seats
+// -------------------- Cập nhật tổng tiền --------------------
+function updateTotalPrice() {
+    let total = 0;
+    selectedSeatIds.forEach(id => {
+        const seat = seats.find(s => s.id === id);
+        if (seat) {
+            let price = baseTicketPrice;
+            if (seat.seatType === "VIP") price += 10000;
+            total += price;
         }
+    });
+    document.getElementById("totalPrice").textContent = total.toLocaleString();
+}
 
-        const seatId = seat.dataset.seatId;
-        const isVip = seat.classList.contains('vip');
-        
-        if (seat.classList.contains('selected')) {
-            // Deselect seat
-            seat.classList.remove('selected');
-            selectedSeats = selectedSeats.filter(s => s.id !== seatId);
-        } else {
-            // Select seat
-            seat.classList.add('selected');
-            selectedSeats.push({
-                id: seatId,
-                type: isVip ? 'vip' : 'normal',
-                price: isVip ? PRICES.vip : PRICES.normal
-            });
-        }
-        
-        updateBookingSummary();
+// -------------------- Đặt vé --------------------
+async function createOrder() {
+    if (!showtimeIdGlobal || selectedSeatIds.length === 0) {
+        alert("Vui lòng chọn ghế trước khi đặt vé.");
+        return;
     }
 
-    function updateBookingSummary() {
-        // Update selected seats list
-        if (selectedSeats.length === 0) {
-            selectedSeatsList.innerHTML = '<p class="no-seats">Chưa chọn ghế nào</p>';
-        } else {
-            selectedSeatsList.innerHTML = selectedSeats.map(seat => `
-                <div class="seat-item">
-                    <div class="seat-info">
-                        <span>Ghế ${seat.id}</span>
-                        <span class="seat-type">${seat.type === 'vip' ? 'VIP' : 'Thường'}</span>
-                    </div>
-                    <div class="seat-price">${formatPrice(seat.price)}đ</div>
-                </div>
-            `).join('');
-        }
+    const token = localStorage.getItem("token");
 
-        // Update price breakdown
-        const normalSeats = selectedSeats.filter(seat => seat.type === 'normal').length;
-        const vipSeats = selectedSeats.filter(seat => seat.type === 'vip').length;
-        
-        normalTicketCount.textContent = `${normalSeats} x ${formatPrice(PRICES.normal)}đ`;
-        vipTicketCount.textContent = `${vipSeats} x ${formatPrice(PRICES.vip)}đ`;
-
-        // Update total price
-        totalPrice.textContent = `${formatPrice(calculateTotalPrice())}đ`;
-    }
-
-    function calculateTotalPrice() {
-        const seatTotal = selectedSeats.reduce((total, seat) => total + seat.price, 0);
-        return seatTotal + PRICES.serviceFee;
-    }
-
-    function loadBookingData() {
-        // Get movie data from URL parameters or localStorage
-        const urlParams = new URLSearchParams(window.location.search);
-        const movieId = urlParams.get('movie') || localStorage.getItem('selected_movie');
-        
-        if (movieId) {
-            // In real app, this would fetch movie data from API
-            const movieData = getMovieById(movieId);
-            if (movieData) {
-                updateMovieInfo(movieData);
-            }
-        }
-    }
-
-    function getMovieById(movieId) {
-        // Sample movie data - in real app, this would come from API
-        const movies = {
-            '1': {
-                title: 'Avengers: Endgame',
-                poster: 'images/movies/avengers.jpg',
-                rating: 'PG-13',
-                duration: '181 phút',
-                genre: 'Hành động, Phiêu lưu'
+    try {
+        const res = await fetch(API_ORDER, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
-            '2': {
-                title: 'Spider-Man: No Way Home',
-                poster: 'images/movies/spiderman.jpg',
-                rating: 'PG-13',
-                duration: '148 phút',
-                genre: 'Hành động, Phiêu lưu'
-            },
-            '3': {
-                title: 'The Batman',
-                poster: 'images/movies/batman.jpg',
-                rating: 'PG-13',
-                duration: '176 phút',
-                genre: 'Hành động, Tội phạm'
-            }
-        };
-        
-        return movies[movieId] || movies['1']; // Default to first movie
-    }
+            body: JSON.stringify({
+                showTimeId: parseInt(showtimeIdGlobal),
+                seatIds: selectedSeatIds
+            })
+        });
 
-    function updateMovieInfo(movieData) {
-        document.getElementById('bookingMoviePoster').src = movieData.poster;
-        document.getElementById('bookingMovieTitle').textContent = movieData.title;
-        document.getElementById('bookingMovieRating').textContent = movieData.rating;
-        document.getElementById('bookingMovieDuration').textContent = movieData.duration;
-        document.getElementById('bookingMovieGenre').textContent = movieData.genre;
-    }
+        if (!res.ok) {
+            const errMsg = await res.text();
+            throw new Error(errMsg);
+        }
 
-    function getMovieData() {
-        return {
-            title: document.getElementById('bookingMovieTitle').textContent,
-            poster: document.getElementById('bookingMoviePoster').src,
-            cinema: document.getElementById('bookingCinema').textContent,
-            showtime: document.getElementById('bookingShowtime').textContent,
-            room: document.getElementById('bookingRoom').textContent
-        };
-    }
+        const data = await res.json();
+        alert(`Đặt vé thành công! Tổng tiền: ${data.totalPrice.toLocaleString()} VND`);
 
-    function formatPrice(price) {
-        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        selectedSeatIds = [];
+        loadSeats(); // reload ghế để cập nhật ghế đã đặt
+    } catch (err) {
+        console.error(err);
+        alert("Đặt vé thất bại: " + err.message);
+    }
+}
+
+// -------------------- Sự kiện nút Đặt vé --------------------
+document.addEventListener("DOMContentLoaded", () => {
+    const btnBook = document.getElementById("btnBook");
+    if (btnBook) {
+        btnBook.addEventListener("click", createOrder);
     }
 });
+
+// Load ghế khi mở trang
+loadSeats();

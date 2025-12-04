@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.Room;
 using api.Dtos.ShowTime;
 using api.Helpers;
 using api.Models;
@@ -15,7 +16,7 @@ namespace api.Interfaces
         Task<bool> IsOverLappingAsync(int roomId, DateTime startTime, DateTime endTime);
         Task<List<ShowTime>> GetShowTimesAsync(DateTime date);
         Task<ShowTime> GetShowtimeByIdAsync(int id);
-        Task<List<Seat>> GetSeatsByShowtimeIdAsync(int ShowTimeId);
+        Task<SeatInfoDto> GetSeatsByShowtimeIdAsync(int ShowTimeId);
         Task<PagedResult<ShowTime>> GetAllShowtime(QueryObject queryObject);
 
     }

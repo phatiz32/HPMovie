@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Dtos.Room;
 using api.Dtos.ShowTime;
 using api.Helpers;
 using api.Interfaces;
@@ -79,18 +80,44 @@ namespace api.Repository
             };
         }
 
-        public async Task<List<Seat>> GetSeatsByShowtimeIdAsync(int ShowTimeId)
+        public async Task<SeatInfoDto> GetSeatsByShowtimeIdAsync(int ShowTimeId)
         {
-            var seat = await _context.ShowTimes
+            var showtime = await _context.ShowTimes
                                     .Include(s => s.Room)
                                     .ThenInclude(r => r.Seats)
+                                    .Include(s=>s.Movie)
                                     .FirstOrDefaultAsync(s => s.Id == ShowTimeId);
-            if (seat == null)
+            if (showtime == null)
             {
                 throw new Exception("Showtime not found.");
             }
-            return seat.Room!.Seats!.OrderBy(s => s.RowIndex).ThenBy(s => s.ColIndex).ToList();
-
+            var bookedSeatIds = await _context.BookingDetails
+                                                .Where(b => b.ShowTimeId == ShowTimeId &&
+                                                            (b.BookingOrder.Status == "HOLDING" || b.BookingOrder.Status == "PAID"))
+                                                .Select(b => b.SeatId)
+                                                .ToListAsync();
+            var dto = new SeatInfoDto
+            {
+                ShowTimeId = showtime.Id,
+                MovieTitle = showtime.Movie!.Title,
+                StartTime = showtime.StartTime,
+                RoomName = showtime.Room!.Name,
+                RowCount = showtime.Room.RowCount,
+                ColumnCount = showtime.Room.ColumnCount,
+                Seats = showtime.Room.Seats!
+                        .OrderBy(s => s.RowIndex)
+                        .ThenBy(s => s.ColIndex)
+                        .Select(s => new Seatdt
+                        {
+                            Id = s.id,
+                            SeatCode = s.SeatCode,
+                            RowIndex = s.RowIndex,
+                            ColIndex = s.ColIndex,
+                            SeatType = s.SeatType,
+                            IsAvailable = !bookedSeatIds.Contains(s.id)
+                        }).ToList()
+            };
+            return dto;
         }
 
         public async Task<ShowTime> GetShowtimeByIdAsync(int id)
