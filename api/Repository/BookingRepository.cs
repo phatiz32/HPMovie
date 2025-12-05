@@ -182,7 +182,11 @@ namespace api.Repository
             {
                 throw new Exception("booking not found");
             }
-            var qrContent = $"BookingId:{booking.Id}; Movie:{booking.showTime.Movie.Title}; Seats:{string.Join(",", booking.BookingDetails.Select(s => s.Seat.SeatCode))}; Time:{booking.showTime.StartTime:HH:mm dd/MM/yyyy}; Room:{booking.showTime.Room.Name}";
+            var comboList = booking.BookingCombos.Any()
+                ? string.Join(", ", booking.BookingCombos
+                        .Select(c => $"{c.Combo.Name} x{c.Quantity}"))
+                : "Không có";
+            var qrContent = $"BookingId:{booking.Id}; Movie:{booking.showTime.Movie.Title}; Seats:{string.Join(",", booking.BookingDetails.Select(s => s.Seat.SeatCode))}; Time:{booking.showTime.StartTime:HH:mm dd/MM/yyyy}; Room:{booking.showTime.Room.Name};Combo: {comboList}";
             var fileName = $"ticket_{booking.Id}";
             var qrPath = QrService.GenerateQrCode(qrContent, fileName); 
             var user = await _userManager.FindByIdAsync(booking.UserId);
@@ -192,10 +196,11 @@ namespace api.Repository
             }
             var body = $@"
             <h2>🎟 Vé xem phim của bạn</h2>
-            <p>Phim: <b>{booking.showTime.Movie.Title}</b></p>
+            <p>Phim: <b>{booking.showTime.Movie.Title}</b></p> 
             <p>Phòng:<b>{booking.showTime.Room.Name}
             <p>Ghế: <b>{string.Join(", ", booking.BookingDetails.Select(s => s.Seat.SeatCode))}</b></p>
             <p>Thời gian: {booking.showTime.StartTime:HH:mm dd/MM/yyyy}</p>
+            <p>Combo: {comboList}</p>
             <p>Tổng tiền: {booking.TotalPrice:N0} VNĐ</p>
             <p>Quét mã QR dưới đây khi đến rạp:</p>
             <img src='cid:{{qrCid}}' alt='QR vé xem phim' width='200'/>

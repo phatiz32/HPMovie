@@ -23,7 +23,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         // lưu token và thông tin user
         localStorage.setItem("token", result.token);
         localStorage.setItem("fullName", result.fullName);
-        localStorage.setItem("role", result.role); // dùng result.role chứ không phải data.role
+        localStorage.setItem("role", result.role); 
 
         alert("Đăng nhập thành công! Xin chào " + result.fullName);
 

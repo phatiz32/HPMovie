@@ -161,7 +161,7 @@ namespace api.Service
                 }
 
                 // 8. Cập nhật Order
-                order.Status = "PAID";
+                order.Status = "PaiD";
                 order.TransactionHash = request.TxHash;
                 order.WalletAddress = request.UserAddress;
                 order.PaidAmount = txDetails.AmountInCET;

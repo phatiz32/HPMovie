@@ -83,10 +83,10 @@ function updateTotalPrice() {
 
 // -------------------- Thêm tất cả combo đã chọn vào order --------------------
 async function addAllComboToOrder() {
-    if (Object.keys(comboSelections).length === 0) {
-        alert("Bạn chưa chọn combo nào!");
-        return;
-    }
+    // if (Object.keys(comboSelections).length === 0) {
+    //     alert("Bạn chưa chọn combo nào!");
+    //     return;
+    // } 
 
     const token = localStorage.getItem("token");
 
@@ -105,13 +105,11 @@ async function addAllComboToOrder() {
             body: JSON.stringify(body)
         });
 
-        if (!res.ok) {
+        if (!res.ok) { 
             const err = await res.text();
             throw new Error(err);
         }
-
-        alert("Thêm combo thành công!");
-        window.location.href = "payment.html"; // chuyển trang thanh toán
+        window.location.href = "payment.html";  
 
     } catch (err) {
         console.error(err);
@@ -119,5 +117,4 @@ async function addAllComboToOrder() {
     }
 }
 
-// -------------------- Start --------------------
 document.addEventListener("DOMContentLoaded", loadCombos);
