@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combo bắp nước</title>
+    <title>Doraemon: Chi tiết phim</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/shop.css">
+    <link rel="stylesheet" href="css/home.css">
+   <link rel="stylesheet" href="CSS/payment.css">
 </head>
 <body>
-    <!-- Header -->
+
+    <!-- Header (giữ nguyên) -->
     <header>
         <div class="container">
             <div class="logo">
@@ -19,46 +21,41 @@
                     <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="movies.html">Phim</a></li>
                     <li><a href="cinemas.html">Rạp chiếu</a></li>
-                    <li><a href="shop.html" class="active">Shop quà tặng</a></li>
+                    <li><a href="shop.html">Shop quà tặng</a></li>
                     <li><a href="news.html">Tin mới & Ưu đãi</a></li>
                     <li><a href="contact.html">Liên hệ</a></li>
                 </ul>
             </nav>
-            <div class="user-actions">
+            <div class="user-actions" id="userActions">
                 <a href="login.html" class="btn-login">Đăng nhập</a>
                 <a href="register.html" class="btn-register">Đăng ký</a>
             </div>
         </div>
     </header>
+    <section class="payment-methods">
+    <div class="container">
+        <h2>Phương thức thanh toán</h2>
+        <div class="payment-buttons">
+            <button class="btn-pay vnpay">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSutP9weqAPNNrV0V616bloZn2fwAdAOHqnFQ&s" alt="VNPAY">
+                Thanh toán với VNPAY
+            </button>
 
-    <!-- Products Grid -->
-    <section class="products-section">
-        <div class="container">
-           
-            <div class="products-grid" id="productsGrid">
-                <!-- Products will be loaded by JavaScript -->
-            </div>
+            <button class="btn-pay momo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZcQPC-zWVyFOu9J2OGl0j2D220D49D0Z7BQ&s" alt="MOMO">
+                Thanh toán với MOMO
+            </button>
         </div>
-
-    </section>
-       <div style="margin-top:20px; font-size:20px; font-weight:bold;">
-            Tổng tiền combo: <span id="totalComboPrice">0</span> VND
-        </div>
-
-        <button id="btnAddAll" class="btn-finish">
-            Hoàn tất & Thêm vào Order
-        </button>
+    </div>
+</section>
 
 
-
-
-    
-    <!-- Footer -->
+    <!-- Footer (giữ nguyên) -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>CineMax</h3>
+                    <h3>HPCinema</h3>
                     <p>Hệ thống rạp chiếu phim hiện đại với chất lượng dịch vụ hàng đầu.</p>
                 </div>
                 <div class="footer-section">
@@ -93,6 +90,5 @@
             </div>
         </div>
     </footer>
-    <script src="js/shop.js"></script>
 </body>
 </html>

@@ -1,0 +1,52 @@
+.payment-methods {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.payment-methods h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.payment-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-pay {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-pay img {
+    width: 30px;
+    height: 30px;
+}
+
+.vnpay {
+    background: #0066B3;
+    color: #fff;
+}
+
+.vnpay:hover {
+    background: #004f87;
+}
+
+.momo {
+    background: #AE2070;
+    color: white;
+}
+
+.momo:hover {
+    background: #8a1859;
+}

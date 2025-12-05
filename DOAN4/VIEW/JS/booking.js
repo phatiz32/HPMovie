@@ -121,6 +121,8 @@ async function createOrder() {
 
         const data = await res.json();
         alert(`Đặt vé thành công! Tổng tiền: ${data.totalPrice.toLocaleString()} VND`);
+        localStorage.setItem("currentOrderId", data.orderId);
+        window.location.href = "shop.html";
 
         selectedSeatIds = [];
         loadSeats(); // reload ghế để cập nhật ghế đã đặt
