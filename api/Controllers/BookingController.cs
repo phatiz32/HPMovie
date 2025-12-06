@@ -70,7 +70,7 @@ namespace api.Controllers
             var booking = await _booking.GetBookingHistoryAsyn(user.Id);
             return Ok(booking);
         }
-       
+        
     }
     
 }

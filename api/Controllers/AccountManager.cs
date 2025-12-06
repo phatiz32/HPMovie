@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Dtos.Account;
 using api.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles ="Admin")]
     public class AccountManager:ControllerBase
     {
         private readonly IAccountManager _accountManager;

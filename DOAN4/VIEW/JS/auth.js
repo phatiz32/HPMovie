@@ -30,8 +30,11 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         // chuyển hướng theo role
         if (result.role === "Admin") {
             window.location.href = "../ADMIN/admin.html";
-        } else {
-            window.location.href = "../ADMIN/payment.html";
+        }else if(result.role==="Staff"){
+            window.location.href="../ADMIN/movie.html"
+        }
+         else {
+            window.location.href = "../VIEW/Index.HTML";
         }
 
     } catch (error) {

@@ -64,17 +64,26 @@ function renderSeats(rows, cols, seats) {
     const seatElements = container.querySelectorAll('.seat.available');
     seatElements.forEach(el => {
         el.addEventListener('click', () => {
-            const seatId = parseInt(el.dataset.id);
-            el.classList.toggle('selected');
+    const seatId = parseInt(el.dataset.id);
 
-            if (selectedSeatIds.includes(seatId)) {
-                selectedSeatIds = selectedSeatIds.filter(id => id !== seatId);
-            } else {
-                selectedSeatIds.push(seatId);
-            }
+    // Nếu chọn mới mà đã đủ 8 ghế → chặn
+    if (!selectedSeatIds.includes(seatId) && selectedSeatIds.length >= 8) {
+        alert("Bạn chỉ được chọn tối đa 8 ghế.");
+        return;
+    }
 
-            updateTotalPrice();
-        });
+    // Toggle chọn / bỏ chọn
+    el.classList.toggle('selected');
+
+    if (selectedSeatIds.includes(seatId)) {
+        selectedSeatIds = selectedSeatIds.filter(id => id !== seatId);
+    } else {
+        selectedSeatIds.push(seatId);
+    }
+
+    updateTotalPrice();
+});
+
     });
 }
 

@@ -181,4 +181,32 @@
     background: #ff4c4c;
     color: #fff;
 }
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: #333;
+}
 
+.user-actions span {
+    background: #f0f2f5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+.btn-logout {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.btn-logout:hover {
+    background-color: #e63946;
+    transform: scale(1.05);
+}

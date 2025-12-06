@@ -94,12 +94,13 @@ namespace api.Controllers
             _context.Payments.Add(payment);
             await _context.SaveChangesAsync();
             await _bookingRepos.SendTicketEmailAsync(orderId);
-            return Ok(new
-            {
-                message = "Thanh toán MOMO thành công",
-                bookingId = booking.Id,
-                paymentId = payment.Id
-            });
+            // return Ok(new
+            // {
+            //     message = "Thanh toán MOMO thành công",
+            //     bookingId = booking.Id,
+            //     paymentId = payment.Id
+            // });
+            return Redirect("http://127.0.0.1:5500/DOAN4/VIEW/succespayment.html");
 
         }
         [HttpPost("momo-notify")]
@@ -182,7 +183,8 @@ namespace api.Controllers
                 _context.Payments.Add(payment);
                 await _context.SaveChangesAsync();
                 await _bookingRepos.SendTicketEmailAsync(orderId);
-                return Ok("Payment Success");
+                return Redirect("http://127.0.0.1:5500/DOAN4/VIEW/succespayment.html");
+
                 
             }catch(Exception e)
             {

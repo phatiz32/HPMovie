@@ -1,52 +1,108 @@
+/* Giữ nguyên background cũ từ các file khác,
+   chỉ chỉnh phần nội dung của body */
 .payment-methods {
-    padding: 40px 0;
-    text-align: center;
+    padding: 60px 0;
+    min-height: 60vh;
 }
 
 .payment-methods h2 {
-    margin-bottom: 20px;
-    font-size: 28px;
-    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-weight: 600;
+    color: #ffffff;
 }
 
 .payment-buttons {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 
+/* Nút thanh toán chung */
 .btn-pay {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    font-size: 16px;
+    width: 280px;
+    height: 140px;
+    padding: 20px;
     border: none;
+    border-radius: 16px;
+    font-size: 1.1rem;
     cursor: pointer;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: 0.3s;
+    font-weight: 600;
+    background: #ffffff22;
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
+/* Logo trong nút thanh toán */
 .btn-pay img {
-    width: 30px;
-    height: 30px;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    pointer-events: none;
 }
 
+/* Hover effect */
+.btn-pay:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background: #ffffff33;
+}
+
+/* Màu sắc riêng từng loại */
 .vnpay {
-    background: #0066B3;
-    color: #fff;
-}
-
-.vnpay:hover {
-    background: #004f87;
+    border: 2px solid #1a73e8aa;
 }
 
 .momo {
-    background: #AE2070;
-    color: white;
+    border: 2px solid #d81b60aa;
 }
 
-.momo:hover {
-    background: #8a1859;
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .payment-buttons {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .btn-pay {
+        width: 90%;
+        height: 120px;
+    }
+}
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: #333;
+}
+
+.user-actions span {
+    background: #f0f2f5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+.btn-logout {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.btn-logout:hover {
+    background-color: #e63946;
+    transform: scale(1.05);
 }

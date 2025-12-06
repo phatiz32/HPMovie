@@ -16,7 +16,7 @@
             <div class="sidebar-header">
                 <div class="logo">
                     <i class='bx bx-movie-play'></i>
-                    <span class="logo-text">CineMax <span class="admin-badge">Admin</span></span>
+                    <span class="logo-text">HPCinema <span class="admin-badge">Admin</span></span>
                 </div>
                 <button class="sidebar-toggle" id="sidebarToggle">
                     <i class='bx bx-chevron-left'></i>
@@ -24,7 +24,7 @@
             </div>
 
             <nav class="sidebar-nav">
-                <div class="nav-item">
+                <div class="nav-item admin-only">
                     <a href="account.html" class="nav-link">
                         <i class='bx bx-user'></i>
                         <span class="link-text">Tài khoản nhân viên</span>
@@ -42,7 +42,7 @@
                         <span class="link-text">Lịch chiếu</span>
                     </a>
                 </div>
-                <div class="nav-item ">
+                <div class="nav-item admin-only">
                     <a href="admin.html" class="nav-link">
                         <i class='bx bx-bar-chart-alt-2'></i>
                         <span class="link-text">Thống kê</span>
@@ -80,7 +80,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="admin-main">
+        <main class="admin-main ">
             <header class="main-header">
                 <div class="header-left">
                     <button class="menu-toggle" id="menuToggle">
@@ -166,5 +166,6 @@
     </script>
     <script src="js/getuser.js"></script>
     <script src="js/showtime.js"></script>
+    <script src="js/checkadmin.js"></script>
 </body>
 </html>

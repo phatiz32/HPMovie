@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doraemon: Chi tiết phim</title>
+    <title>Rạp chiếu - CineMax</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
-   <link rel="stylesheet" href="CSS/movie-detail.css">
+    <link rel="stylesheet" href="css/history.css">
 </head>
 <body>
-
-    <!-- Header (giữ nguyên) -->
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
-                <h1><a href="index.html">HPCinema</a></h1>
+                <h1><a href="index.html">CineMax</a></h1>
             </div>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="movies.html">Phim</a></li>
-                    <li><a href="cinemas.html">Rạp chiếu</a></li>
+                    <li><a href="cinemas.html" class="active">Lịch chiếu</a></li>
+                    <li><a href="history.html">Lịch sử đặt vé</a></li>
                     <li><a href="contact.html">Liên hệ</a></li>
                 </ul>
             </nav>
@@ -30,41 +29,23 @@
             </div>
         </div>
     </header>
-
-    <section class="movie-detail">
-
-    <div class="movie-poster">
-        <img src="" alt="Poster phim">
-    </div>
-
-    <div class="movie-info">
-        <h2></h2>
-
-        <p><strong>Thể loại:</strong> <span class="genre"></span></p>
-        <p><strong>Thời lượng:</strong> <span class="duration"></span></p>
-        <p><strong>Ngày phát hành:</strong> <span class="release-date"></span></p>
-        <p><strong>Độ tuổi:</strong> <span class="age"></span></p>
-        <p><strong>Ngôn ngữ:</strong> <span class="language"></span></p>
-        <p><strong>Đạo diễn:</strong> <span class="director"></span></p>
-        <p><strong>Diễn viên:</strong> <span class="cast"></span></p>
-        <p><strong>Trạng thái:</strong> <span class="status"></span></p>
-
-        <a href="movies.html" class="btn-book">Đặt vé</a>
-
-        <div class="trailer-container">
-            <iframe src="" frameborder="0" allowfullscreen></iframe>
+    <section class="booking-history">
+    <div class="container">
+        <h2>Lịch sử đặt vé</h2>
+        <div id="historyContainer" class="history-list">
+            <!-- JS sẽ render vào đây -->
         </div>
     </div>
-
 </section>
 
 
-    <!-- Footer (giữ nguyên) -->
+        
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>HPCinema</h3>
+                    <h3>CineMax</h3>
                     <p>Hệ thống rạp chiếu phim hiện đại với chất lượng dịch vụ hàng đầu.</p>
                 </div>
                 <div class="footer-section">
@@ -99,6 +80,9 @@
             </div>
         </div>
     </footer>
-    <script src="JS/movie-detail.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/index.js"></script>
 </body>
-</html>
+</html> 

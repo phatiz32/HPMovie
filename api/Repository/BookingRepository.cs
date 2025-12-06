@@ -114,6 +114,7 @@ namespace api.Repository
                                                     {
                                                         MovieTitle = b.showTime.Movie.Title,
                                                         StartTime = b.showTime.StartTime,
+                                                        Room=b.showTime.Room.Name,
                                                         TotalAmount = b.TotalPrice,
                                                         Seats = b.BookingDetails.Select(s => s.Seat.SeatCode),
                                                         ComboName = b.BookingCombos.Select(s => s.Combo.Name),
