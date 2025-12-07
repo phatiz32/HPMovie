@@ -12,6 +12,7 @@ namespace api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles ="Admin")]
     public class StatisticController:ControllerBase
     {
         private readonly IStatisticRepository _statistic;

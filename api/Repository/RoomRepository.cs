@@ -20,10 +20,13 @@ namespace api.Repository
         }
         public async Task<Room> CreateRoom(CreateRoomDto dto)
         {
-            var existingRoom = _context.Rooms.FirstOrDefault(r => r.Name == dto.Name);
-            if (existingRoom != null)
+            string normalizedName= dto.Name.Trim().ToLower();
+             bool exists = await _context.Rooms
+                                .AnyAsync(r => r.Name.Trim().ToLower() == normalizedName);
+
+            if (exists)
             {
-                throw new Exception("Room with the same name already exists.");
+                throw new Exception("Room name already exists.");
             }
             var room = dto.ToCreateRoom();
             await _context.Rooms.AddAsync(room);

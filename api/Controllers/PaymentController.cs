@@ -88,7 +88,7 @@ namespace api.Controllers
                 TransactionId = response.OrderId, // Momo orderId
                 PaymentGetway = "MOMO",
                 Amount = long.Parse(response.Amount),
-                PaidAt = DateTime.UtcNow,
+                PaidAt = DateTime.Now,
                 BookingOrderId = booking.Id
             };
             _context.Payments.Add(payment);

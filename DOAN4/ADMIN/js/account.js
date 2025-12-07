@@ -1,4 +1,5 @@
 const API_ACCOUNT = "http://localhost:5136/api/AccountManager";
+const API_GET_STAFF = "http://localhost:5136/api/AccountManager/staff";
 
 const staffTableBody = document.getElementById("staffTableBody");
 const btnAddStaff = document.getElementById("btnAddStaff");
@@ -16,6 +17,7 @@ btnAddStaff.addEventListener("click", () => {
 // Hủy form
 btnCancelStaff.addEventListener("click", () => {
     staffFormContainer.style.display = "none";
+    staffForm.reset();
 });
 
 // Tạo tài khoản nhân viên
@@ -26,13 +28,12 @@ staffForm.addEventListener("submit", async (e) => {
         fullName: document.getElementById("staffName").value,
         email: document.getElementById("staffEmail").value,
         password: document.getElementById("staffPassword").value,
-        dateofbirth:document.getElementById("birthDay").value,
-        phonenumber:document.getElementById("phoneNumber").value
-
+        dateofbirth: document.getElementById("birthDay").value,
+        phonenumber: document.getElementById("phoneNumber").value
     };
 
     try {
-        const token = localStorage.getItem("token"); // nếu có token admin
+        const token = localStorage.getItem("token");
         const res = await fetch(`${API_ACCOUNT}/create`, {
             method: "POST",
             headers: {
@@ -50,7 +51,7 @@ staffForm.addEventListener("submit", async (e) => {
         alert("Tạo nhân viên thành công!");
         staffFormContainer.style.display = "none";
         staffForm.reset();
-        loadStaffs(); // reload danh sách
+        loadStaff(); // ✅ FIX: Sửa từ loadStaffs() -> loadStaff()
     } catch (err) {
         alert("Lỗi: " + err.message);
     }
@@ -83,16 +84,16 @@ btnImportExcel.addEventListener("click", async () => {
 
         alert("Import Excel thành công!");
         staffExcelFile.value = "";
-        loadStaffs();
+        loadStaff(); // ✅ FIX: Sửa từ loadStaffs() -> loadStaff()
     } catch (err) {
         alert("Lỗi: " + err.message);
     }
 });
-const API_GET_STAFF = "http://localhost:5136/api/AccountManager/staff";
+
 // Hàm load danh sách staff
 async function loadStaff() {
     try {
-        const token = localStorage.getItem("token"); // nếu có auth
+        const token = localStorage.getItem("token");
         const res = await fetch(API_GET_STAFF, {
             headers: {
                 "Authorization": token ? `Bearer ${token}` : ""
@@ -104,15 +105,16 @@ async function loadStaff() {
         const staffList = await res.json();
 
         if (!staffList || staffList.length === 0) {
-            staffTableBody.innerHTML = `<tr><td colspan="4" style="text-align:center;">Không có nhân viên nào</td></tr>`;
+            staffTableBody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:#7dd3fc;padding:40px;">Không có nhân viên nào</td></tr>`;
             return;
         }
+
         console.log(staffList);
         staffTableBody.innerHTML = staffList.map(staff => `
             <tr>
                 <td>${staff.fullName}</td>
                 <td>${staff.email}</td>
-                <td>${staff.phoneNumber || ""}</td>
+                <td>${staff.phoneNumber || "N/A"}</td>
                 <td>
                     <button class="delete-btn" onclick="deleteStaff('${staff.id}')">
                         <i class='bx bx-trash'></i> Xóa
@@ -122,9 +124,10 @@ async function loadStaff() {
         `).join("");
     } catch (err) {
         console.error(err);
-        staffTableBody.innerHTML = `<tr><td colspan="4" style="text-align:center;">Lỗi khi tải dữ liệu</td></tr>`;
+        staffTableBody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:#f87171;">Lỗi khi tải dữ liệu: ${err.message}</td></tr>`;
     }
 }
+
 // Xóa nhân viên
 async function deleteStaff(accountId) {
     if (!confirm("Bạn có chắc muốn xóa nhân viên này không?")) return;
@@ -150,5 +153,5 @@ async function deleteStaff(accountId) {
     }
 }
 
-
+// Load danh sách khi trang được tải
 window.addEventListener("DOMContentLoaded", loadStaff);

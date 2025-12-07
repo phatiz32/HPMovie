@@ -16,7 +16,7 @@ let editingMovieId = null;
 
 
 // Load danh sách phim
-async function loadMovies(searchName = "", pageNumber = 1, pageSize = 3) {
+async function loadMovies(searchName = "", pageNumber = 1, pageSize = 5) {
     try {
         const url = new URL(API_BASE);
         url.searchParams.append("SearchName", searchName);

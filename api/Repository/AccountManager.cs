@@ -120,7 +120,7 @@ namespace api.Repository
                 {
                     FullName = fullName,
                     Email = email,
-                    UserName = email, // ✅ Bắt buộc
+                    UserName = email, 
                     PhoneNumber = phoneNumber,
                     DateOfBirth = dateOfBirth
                 };

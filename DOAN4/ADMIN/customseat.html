@@ -104,11 +104,11 @@
                     }
 
                     const data = await res.json();
-                    alert("✅ Tạo phòng thành công! Tổng số ghế: " + data.totalSeats);
+                    alert("Tạo phòng thành công! Tổng số ghế: " + data.totalSeats);
                     console.log("Response:", data);
                 }catch(err){
                     console.error(err);
-                    alert("❌ Gửi dữ liệu thất bại: " + err.message);
+                    alert("Gửi dữ liệu thất bại: " + err.message);
                 }
                 
             });

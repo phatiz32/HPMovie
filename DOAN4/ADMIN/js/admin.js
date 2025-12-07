@@ -1,4 +1,3 @@
-
 const loadRevenueBtn = document.getElementById('loadRevenueBtn');
 const yearInput = document.getElementById('yearInput');
 
@@ -6,12 +5,45 @@ const loadRevenueByDayBtn = document.getElementById('loadRevenueByDayBtn');
 const startDateInput = document.getElementById('startDate');
 const endDateInput = document.getElementById('endDate');
 
-// Hàm fetch dữ liệu an toàn
+// Hàm lấy token từ localStorage
+function getAuthToken() {
+    const token = localStorage.getItem('token'); // hoặc tên key bạn dùng để lưu token
+    if (!token) {
+        alert('Vui lòng đăng nhập lại');
+        window.location.href = '/login.html'; // redirect về trang login
+        throw new Error('Không tìm thấy token');
+    }
+    return token;
+}
+
+// Hàm fetch dữ liệu an toàn với JWT token
 async function safeFetch(url) {
-    const response = await fetch(url);
+    const token = getAuthToken();
+    
+    const response = await fetch(url, {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    });
+    
+    if (response.status === 401) {
+        alert('Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại');
+        localStorage.removeItem('token');
+        window.location.href = '/login.html';
+        throw new Error('Unauthorized');
+    }
+    
+    if (response.status === 403) {
+        alert('Bạn không có quyền truy cập chức năng này');
+        throw new Error('Forbidden');
+    }
+    
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
     const text = await response.text();
-    if (!text) return []; // trả về mảng rỗng nếu server không có dữ liệu
+    if (!text) return [];
+    
     try {
         return JSON.parse(text);
     } catch (err) {
@@ -96,7 +128,11 @@ async function loadRevenueByDay(startDate, endDate) {
     tableBody.innerHTML = '<tr><td colspan="3" style="text-align:center">Đang tải...</td></tr>';
 
     try {
-        const data = await safeFetch(`http://localhost:5136/api/statistic/by-day?startTime=${startDate}&endTime=${endDate}`);
+        // Định dạng datetime theo ISO 8601 để C# hiểu được
+        const startDateTime = `${startDate}T00:00:00`;
+        const endDateTime = `${endDate}T23:59:59`;
+        
+        const data = await safeFetch(`http://localhost:5136/api/statistic/by-day?startTime=${encodeURIComponent(startDateTime)}&endTime=${encodeURIComponent(endDateTime)}`);
         if (!data.length) {
             tableBody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:#999">Không có dữ liệu</td></tr>';
             return;
@@ -114,9 +150,30 @@ async function loadRevenueByDay(startDate, endDate) {
         tableBody.innerHTML = `<tr><td colspan="3" style="text-align:center;color:red">${err.message}</td></tr>`;
     }
 }
+
+// Hàm download file với JWT token
 async function downloadFile(url, filename) {
     try {
-        const response = await fetch(url);
+        const token = getAuthToken();
+        
+        const response = await fetch(url, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        
+        if (response.status === 401) {
+            alert('Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại');
+            localStorage.removeItem('token');
+            window.location.href = '/login.html';
+            return;
+        }
+        
+        if (response.status === 403) {
+            alert('Bạn không có quyền truy cập chức năng này');
+            return;
+        }
+        
         if (!response.ok) throw new Error('Không tải được file');
 
         const blob = await response.blob();
@@ -151,6 +208,7 @@ document.getElementById('exportByDayBtn').addEventListener('click', () => {
     if (!startDate || !endDate) return alert("Vui lòng chọn khoảng thời gian");
     downloadFile(`http://localhost:5136/api/statistic/export-bydate?startDate=${startDate}&endDate=${endDate}`, `Revenue_${startDate}_${endDate}.xlsx`);
 });
+
 let revenueChart; // lưu chart để update
 
 async function loadChartRevenueByMonth(year) {
@@ -161,16 +219,15 @@ async function loadChartRevenueByMonth(year) {
             return;
         }
 
-        const labels = data.map(item => item.label); // ví dụ: "1/2025", "2/2025"
+        const labels = data.map(item => item.label);
         const revenueData = data.map(item => item.totalRevenue);
 
         const ctx = document.getElementById('revenueChart').getContext('2d');
 
-        // Nếu chart đã tồn tại thì destroy trước
         if (revenueChart) revenueChart.destroy();
 
         revenueChart = new Chart(ctx, {
-            type: 'bar', // cột
+            type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
@@ -187,7 +244,7 @@ async function loadChartRevenueByMonth(year) {
                         beginAtZero: true,
                         ticks: {
                             callback: function(value) {
-                                return value.toLocaleString(); // format VND
+                                return value.toLocaleString();
                             }
                         }
                     }
@@ -205,7 +262,3 @@ async function loadChartRevenueByMonth(year) {
         alert("Lỗi khi tải dữ liệu biểu đồ");
     }
 }
-
-
-
-

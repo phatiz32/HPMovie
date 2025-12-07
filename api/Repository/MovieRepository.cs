@@ -140,6 +140,19 @@ namespace api.Repository
         {
             var movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
             if (movie == null) return null;
+            if (dto.Status == "ENDED" && movie.Status != "ENDED")
+            {
+                // Kiểm tra xem phim có lịch chiếu nào không
+                var hasShowtimes = await _context.ShowTimes
+                    .AnyAsync(s => s.MovieId == id && s.EndTime >= DateTime.Now);
+
+                if (hasShowtimes)
+                {
+                    throw new InvalidOperationException(
+                        "Không thể chuyển trạng thái về 'Ended' vì phim này vẫn còn lịch chiếu trong tương lai."
+                    );
+                }
+            }
             string fileName = null;
             if (dto.PosterFile != null && dto.PosterFile.Length > 0)
             {

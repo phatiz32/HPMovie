@@ -191,10 +191,10 @@ const res = await fetch("http://localhost:5136/api/Room", {
 });
 
             if(!res.ok){ alert("Lỗi khi tạo phòng"); return; }
-            alert("✅ Tạo phòng thành công!");
+            alert(" Tạo phòng thành công!");
             autoModal.style.display="none";
             loadRooms();
-        }catch(err){ alert("❌ Lỗi: "+err.message); }
+        }catch(err){ alert(" Lỗi: "+err.message); }
     });
     
 

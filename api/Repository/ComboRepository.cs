@@ -58,6 +58,14 @@ namespace api.Repository
 
         public async Task<Combo> CreateComboAsync(CreateComboDto dto)
         {
+            string normalizedName= dto.Name.Trim().ToLower();
+             bool exists = await _context.Combos
+                                .AnyAsync(r => r.Name.Trim().ToLower() == normalizedName);
+
+            if (exists)
+            {
+                throw new Exception("Combo name already exists.");
+            }
 
             string imageUrl = null;
             if (dto.formFile != null && dto.formFile.Length > 0)
